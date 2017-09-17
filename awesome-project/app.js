@@ -9,7 +9,7 @@ const mongoose     = require('mongoose');
 
 
 mongoose.connect('mongodb://localhost/awesome-project');
-
+const authRoutes = require('./routes/auth');
 const app = express();
 
 // view engine setup
@@ -30,6 +30,7 @@ app.use(layouts);
 
 const index = require('./routes/index');
 app.use('/', index);
+app.use('/', authRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
