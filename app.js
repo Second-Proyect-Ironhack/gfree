@@ -8,7 +8,11 @@ const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 const errors = require('./config/errors')
 
-mongoose.connect('mongodb://localhost/awesome-project');
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
+
+mongoose.connect(process.env.MONGO_URI);
 const authRoutes = require('./routes/auth');
 const index = require('./routes/index');
 const places = require('./routes/places')
