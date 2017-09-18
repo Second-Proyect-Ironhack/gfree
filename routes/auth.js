@@ -4,10 +4,11 @@ const bcryptSalt = 10;
 const path = require('path');
 const passport = require('passport');
 const debug = require('debug')("app:auth:local");
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
 const router = require('express').Router();
 
-router.get("/signup", (req, res, next) => {
+router.get("/signup", ensureLoggedOut(), (req, res, next) => {
   res.render("signup");
 });
 
@@ -43,7 +44,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 
-router.get('/login',(req,res) =>{
+router.get('/login', ensureLoggedOut(),(req,res) =>{
   res.render('login',{ message: req.flash("error") });
 });
 
