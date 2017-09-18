@@ -39,7 +39,7 @@ function initMap() {
             map.fitBounds(place.geometry.viewport);
           } else {
             map.setCenter(place.geometry.location);
-            map.setZoom(15);  // Why 17? Because it looks good.
+            map.setZoom(17);  // Why 17? Because it looks good.
           }
           marker.setIcon(/** @type {google.maps.Icon} */({
             url: place.icon,
@@ -60,8 +60,9 @@ function initMap() {
             ].join(' ');
           }
 
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.setContent('<div><img src='+place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})+'><h3>' + place.name + '</h3><br>' + address);
           infowindow.open(map, marker);
+          console.log(place)
         });
 
 }
