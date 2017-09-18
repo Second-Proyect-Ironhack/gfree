@@ -6,13 +6,16 @@ const passport = require('passport');
 const debug = require('debug')("app:auth:local");
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
+const multer = require('multer')
+const upload = multer({dest:'.public/uploads/'})
+
 const router = require('express').Router();
 
 router.get("/signup", ensureLoggedOut(), (req, res, next) => {
   res.render("signup");
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", upload.single('picture'), (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
@@ -36,7 +39,11 @@ router.post("/signup", (req, res, next) => {
     const newUser = new User({
       username,
       email,
-      password: hashPass
+      password: hashPass,
+      picture : {
+                    pic_path: `/uploads/${req.file.filename}`,
+                    pic_name : req.file.originalname
+                  }
     })
     .save()
     .then(user => res.redirect('/'))
