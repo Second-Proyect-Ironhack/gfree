@@ -51,22 +51,26 @@ function initMap() {
           marker.setPosition(place.geometry.location);
           marker.setVisible(true);
 
-          var address = '';
-          if (place.address_components) {
-            address = [
-              (place.address_components[0] && place.address_components[0].short_name || ''),
-              (place.address_components[1] && place.address_components[1].short_name || ''),
-              (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-          }
-
-          infowindow.setContent('<div><img src='+place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})+'><h3>' + place.name + '</h3><br>' + address);
+          if(place.photos !== undefined){
+          infowindow.setContent('<div><img src='+place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})+'><h3>' + place.name + '</h3><br>' + place.formatted_address);
+        }else{
+          infowindow.setContent('<div><h3>' + place.name + '</h3><br>' + place.formatted_address);
+        }
           infowindow.open(map, marker);
-          console.log(place)
+          console.log(place.geometry.location.lat())
+          fillInputs(place)
         });
 
 }
 
+function fillInputs(place) {
+  $('#placeAddress').val(place.formatted_address)
+  $('#placeLat').val(place.geometry.location.lat())
+  $('#placeLng').val(place.geometry.location.lng())
+  if(place.photos !== undefined){
+  $("#placePicture").val(place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}))
+  }
+}
 function locate(position, map){
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position){

@@ -6,10 +6,10 @@ const placeSchema = new Schema({
   description: String,
   address: String,
   coordinates: {
-    lat: String,
-    lng: String,
+    lat: Number,
+    lng: Number,
   },
-  refToUser: String,
+  refToUser: Schema.Types.ObjectId,
   picture: String,
 }, {
   timestamps: {
@@ -18,6 +18,6 @@ const placeSchema = new Schema({
   }
 });
 
-const Plsce = mongoose.model("Place", placeSchema);
+const Place = mongoose.model("Place", placeSchema);
 
 module.exports = Place;
