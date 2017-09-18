@@ -1,127 +1,56 @@
-const express = require('express');
-const router = express.Router();
-const passport = require('passport');
 const User = require("../models/User");
-const multer = require('multer');
-const {
-  ensureLoggedIn,
-  ensureLoggedOut
-} = require('connect-ensure-login');
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
-const upload = multer({
-  dest: './public/uploads/'
+const path = require('path');
+const passport = require('passport');
+const debug = require('debug')("app:auth:local");
+
+const router = require('express').Router();
+
+router.get("/signup", (req, res, next) => {
+  res.render("signup");
 });
 
+router.post("/signup", (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
 
-router.get('/signup', (req, res, next) => {
-  res.render('signup')
-})
-router.get('/login', ensureLoggedOut('/home'), (req, res, next) => {
-  res.render('login')
-})
-
-router.post('/signup', ensureLoggedOut(), upload.single('avatar'), (req, res, next) => {
-  const newUser = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    picture: {
-      pic_path: `/uploads/${req.file.avatar}`,
-      pic_name: req.file.avatar
-    }
-  });
-
-  if (newUser.email === '' || newUser.password === '') {
-    res.render('signup', {
-      errorMessage: 'Enter both email and password to sign up.'
-    });
+  if (username === "" || password === "") {
+    res.render("signup", { message: "Indicate username and password" });
     return;
   }
 
-  User.findOne({
-    email: newUser.email
-  }, '_id', (err, existingUser) => {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    if (existingUser !== null) {
-      res.render('signup', {
-        errorMessage: `The email ${newUser.email} is already in use.`
-      });
+  User.findOne({ username }, "username", (err, user) => {
+    if (user !== null) {
+      res.render("signup", { message: "The username already exists" });
       return;
     }
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashedPass = bcrypt.hashSync(newUser.password, salt);
+    const hashPass = bcrypt.hashSync(password, salt);
 
-    const userSubmission = {
-      name: newUser.name,
-      email: newUser.email,
-      password: hashedPass,
-      picture: newUser.picture
+    debug("User created");
 
-    };
+    const newUser = new User({
+      username,
+      password: hashPass
+    })
+    .save()
+    .then(user => res.redirect('/'))
+    .catch(e => res.render("signup", { message: "Something went wrong" }));
 
-    const theUser = new User(userSubmission);
-
-    theUser.save((err) => {
-      if (err) {
-        res.render('signup', {
-          errorMessage: 'Something went wrong. Try again later.'
-        });
-        return;
-      }
-
-      res.redirect('/');
-    });
-
-
-  })
-
-})
-
-// router.post('/login', ensureLoggedOut('/home'), (req, res, next) => {
-//   const email = req.body.email;
-//   const password = req.body.password;
-//
-//   if (email === "" || password === "") {
-//     res.render("login", {
-//       errorMessage: "Indicate a username and a password to sign up"
-//     });
-//     return;
-//   }
-//
-//   User.findOne({
-//     "email": email
-//   }, (err, user) => {
-//     if (err || !user) {
-//       res.render("login", {
-//         errorMessage: "The username doesn't exist"
-//       });
-//       return;
-//     }
-//     if (bcrypt.compareSync(password, user.password)) {
-//       // Save the login in the session!
-//
-//       req.session.currentUser = user;
-//       req.locals.user= user;
-//       res.redirect("home");
-//     } else {
-//       res.render("login", {
-//         errorMessage: "Incorrect password"
-//       });
-//     }
-//   });
-// })
-
-router.get('/home', (req, res) => {
-  console.log(req.session.currentUser)
-  res.render('home', {
-    user: req.locals.user
   });
 });
 
+
+router.get('/login',(req,res) =>{
+  res.render('login',{ message: req.flash("error") });
+});
+
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+  failureFlash: true,
+  passReqToCallback: true
+}));
 module.exports = router;
