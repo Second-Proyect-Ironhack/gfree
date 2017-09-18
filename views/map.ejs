@@ -1,9 +1,11 @@
 <form class="" action="/add/place" method="post">
-  <input type="name" name="name" value="">
+  <label for="name">Place's name</label>
+  <input type="text" id="placeName"name="name" value="">
   <input type="text" id="autocomplete">
-  <input type="hidden" name="location" value="">
-  <input type="hidden" name="address" value="">
-  <input type="hidden" name="picture" value="">
+  <input type="hidden" id="placeLat" name="lat" value="">
+  <input type="hidden" id="placeLng" name="lng" value="">
+  <input type="hidden" id="placeAddress" name="address" value="">
+  <input type="hidden" id="placePicture"name="picture" value="">
   <input type="submit" name="" value="Pick">
 </form>
 
