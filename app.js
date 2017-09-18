@@ -31,15 +31,6 @@ app.set('view engine', 'ejs');
 app.locals.title = 'Gfree';
 app.locals.subtitle = 'Look for gluten free places around the world';
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(layouts);
-
 app.use(session({
   secret: "asdfasdf",
   cookie: { maxAge: 60000 },
@@ -50,6 +41,18 @@ app.use(session({
 }));
 
 
+require('./config/serializers');
+require('./config/local');
+app.use(passport.initialize())
+app.use(passport.session())
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(layouts);
 
 
 
