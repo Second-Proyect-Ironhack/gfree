@@ -5,4 +5,8 @@ router.get('/map', (req,res,next)=>{
   res.render('map')
 })
 
+router.post('/add/place', (req, res, next)=>{
+  
+})
+
 module.exports = router
