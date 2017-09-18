@@ -79,6 +79,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', authRoutes);
 app.get('/', (req,res) => {console.log(req.user)
 res.render('index',{user:req.user})});
+app.use('/', places);
 
 
 app.use(errors)
