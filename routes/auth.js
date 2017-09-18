@@ -14,6 +14,7 @@ router.get("/signup", ensureLoggedOut(), (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
 
   if (username === "" || password === "") {
@@ -34,6 +35,7 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
+      email,
       password: hashPass
     })
     .save()
