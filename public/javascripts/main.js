@@ -1,4 +1,5 @@
 var map;
+
 function initMap() {
   var position = {
     lat: 41.3977381,
@@ -26,6 +27,7 @@ function initMap() {
 
   getPlaces(map)
   marker.setMap(map)
+
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
     marker.setVisible(false);
@@ -65,7 +67,12 @@ function initMap() {
     infowindow.open(map, marker);
     console.log(place.geometry.location.lat())
     fillInputs(place)
+    $("#create").on("click",function(e,place, map, marker){
+      e.preventDefault()
+    createOnePlace(place, map, marker)})
+
   });
+
 }
 
 

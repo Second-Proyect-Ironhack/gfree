@@ -21,3 +21,16 @@ function show(arr){
     })
   })
 }
+
+function createOnePlace (place, input,map) {
+  return $.post("http://localhost:3000/map",{
+    name: $("#placeName").val(),
+    address: $("#placeAddress").val(),
+      lat : $("#placeLat").val(),
+      lng : $("#placeLng").val()
+  }).done(function(){
+    console.log("HOLA")
+  getPlaces(map)
+  marker.setMap(map)
+})
+}
