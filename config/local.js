@@ -1,6 +1,9 @@
 const bcrypt = require("bcrypt");
 const passport = require('passport');
+const path = require('path')
 const User = require('../models/User');
+const debugPath = "app:"+path.basename(__filename).split('.')[0];
+const debug = require('debug')(debugPath)
 const LocalStrategy = require("passport-local").Strategy;
 
 

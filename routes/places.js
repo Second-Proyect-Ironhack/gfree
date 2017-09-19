@@ -1,13 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const Place = require('../models/Place')
-router.get('/map', (req,res,next)=>{
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
+
+router.get('/map',ensureLoggedIn("/login"), (req,res,next)=>{
   res.render('map')
 })
-router.get('/place',(req,res, next)=>{
+
+router.get('/place',ensureLoggedIn("/login"),(req,res, next)=>{
   res.render('place')
 })
-router.post('/add/place', (req, res, next)=>{
+
+router.post('/add/place',ensureLoggedIn("/login"), (req, res, next)=>{
   console.log(req.body.address)
   Place.findOne({"address": req.body.address},(err, place)=>{
     if(place !== null){
@@ -28,7 +32,7 @@ router.post('/add/place', (req, res, next)=>{
     .catch((e)=> next(e))
   })
 })
-router.get("/place/:id",(req,res,next)=>{
+router.get("/place/:id",ensureLoggedIn("/login"),(req,res,next)=>{
   const myId = req.params.id
   Place.findOne({ _id : myId}, (err, place)=>{
     res.render("place", {place})

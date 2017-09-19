@@ -63,20 +63,12 @@ function initMap() {
 }
 window.getRestaurants= function(){
   $.ajax ({
-    method: "GET",
+    method: "get",
     url : "http://localhost:27017/gfree-development/places",
-    dataType : 'jsonp',
+    dataType : 'json',
   }).then(data => console.log(data)).catch(e => console.log(e))
 }
 
-function fillInputs(place) {
-  $('#placeAddress').val(place.formatted_address)
-  $('#placeLat').val(place.geometry.location.lat())
-  $('#placeLng').val(place.geometry.location.lng())
-  if(place.photos !== undefined){
-  $("#placePicture").val(place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}))
-  }
-}
 function locate(position, map){
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position){
