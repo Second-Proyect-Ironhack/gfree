@@ -1,0 +1,6 @@
+<a href="/home">Go back</a>
+<h1><%= user.username %></h1>
+<img src="<%= user.picture.pic_path %>" height=200 width=80%><br>
+<p><%= user.picture.pic_name %></p>
+<a href="/edit">Edit profile</a><br>
+<a href="/<%= user._id %>/delete/">Delete your account</a>
