@@ -47,6 +47,7 @@ router.get('/places', (req,res,next)=>{
 //   })
 // })
 router.post('/map', (req, res, next)=>{
+  console.log(req.body)
       const newPlace= new Place({
         name: req.body.name,
         address : req.body.address,
