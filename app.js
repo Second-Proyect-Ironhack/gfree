@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 const MongoStore = require("connect-mongo")(session);
 const errors = require('./config/errors')
 
+
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
 }
@@ -79,7 +80,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(layouts);
+
 
 
 app.use(logger('dev'));
@@ -89,6 +90,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', authRoutes);
+app.use('/', places)
 app.get('/', (req,res) => res.render('index',{user:req.user}));
 
 

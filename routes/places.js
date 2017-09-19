@@ -23,6 +23,7 @@ router.post('/add/place', (req, res, next)=>{
       },
       picture : req.body.picture
     }).save().then((p)=>{
+      console.log(p)
       res.redirect(`/place/${p._id}`)})
     .catch((e)=> next(e))
   })

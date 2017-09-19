@@ -60,7 +60,13 @@ function initMap() {
           console.log(place.geometry.location.lat())
           fillInputs(place)
         });
-
+}
+window.getRestaurants= function(){
+  $.ajax ({
+    method: "GET",
+    url : "http://localhost:27017/gfree-development/places",
+    dataType : 'jsonp',
+  }).then(data => console.log(data)).catch(e => console.log(e))
 }
 
 function fillInputs(place) {
