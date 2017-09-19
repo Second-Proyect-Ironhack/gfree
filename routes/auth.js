@@ -64,6 +64,13 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
+router.get("/logout", ensureLoggedIn(), (req, res, next) => {
+  req.session.destroy((err) => {
+    res.redirect("/login");
+  });
+});
+
+
 router.get('/home', ensureLoggedIn(),(req,res) =>{
   console.log(req.user)
   res.render('home',{ user: req.user});
