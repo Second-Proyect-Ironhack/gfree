@@ -65,6 +65,7 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 router.get('/home', ensureLoggedIn(),(req,res) =>{
-  res.render('home',{ user: req.session.currentUser});
+  console.log(req.user)
+  res.render('home',{ user: req.user});
 });
 module.exports = router;
