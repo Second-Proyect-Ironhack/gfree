@@ -21,3 +21,10 @@ function show(arr){
     })
   })
 }
+
+function createOnePlace (place, input, map, marker) {
+  return $.post("http://localhost:3000/add/place").done(function(){
+  getPlaces(map)
+  marker.setMap(map)
+})
+}
