@@ -61,10 +61,10 @@ router.post('/map', (req, res, next)=>{
 
 router.get("/place/:id",ensureLoggedIn("/login"),(req,res,next)=>{
   Product.find({refToPlace:req.params.id})
-  .populate('refToPlace')
   .then(result => {
-      console.log(result);
-      res.render ("place" , {product:result})})
+    Place.findOne({_id:req.params.id}).then(result2=>res.render ("place" , {place:result2 ,products:result}))})
+
+
 
 })
 module.exports = router

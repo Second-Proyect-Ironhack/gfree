@@ -4,7 +4,10 @@ const Schema   = mongoose.Schema;
 const productSchema = new Schema({
   name: String,
   description: String,
-  refToPlace: Schema.Types.ObjectId,
+  refToPlace: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
   refToUser: Schema.Types.ObjectId,
   delete:{type:Number, default:0},
   picture: {
