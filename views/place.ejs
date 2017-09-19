@@ -1,1 +1,10 @@
-<p><%= product  %></p>
+<p><%= products  %></p>
+
+<h1><%= place.name  %>
+<h2>Product list</h2>
+<ul>
+  <% products.forEach((product) => { %>
+    <li>
+      <%= product.name %>
+    </li>
+  <%  }) %>
