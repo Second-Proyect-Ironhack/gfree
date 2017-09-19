@@ -1,5 +1,5 @@
 var map;
-
+var marker;
 function initMap() {
   var position = {
     lat: 41.3977381,
@@ -20,7 +20,7 @@ function initMap() {
   autocomplete.bindTo('bounds', map);
 
   var infowindow = new google.maps.InfoWindow();
-  var marker = new google.maps.Marker({
+  marker = new google.maps.Marker({
     map: map,
     anchorPoint: new google.maps.Point(0, -29)
   });
@@ -66,16 +66,10 @@ function initMap() {
     }
     infowindow.open(map, marker);
     console.log(place.geometry.location.lat())
-    fillInputs(place)
-    $("#create").on("click",function(e,place, map, marker){
-      e.preventDefault()
-    createOnePlace(place, map, marker)})
-
+     fillInputs(place)
   });
 
 }
-
-
 
 function locate(position, map) {
   if (navigator.geolocation) {
