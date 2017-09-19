@@ -64,7 +64,7 @@ function initMap() {
 window.getRestaurants= function(){
   $.ajax ({
     method: "get",
-    url : "http://localhost:27017/gfree-development/places",
+    url : "http://localhost:3000/places",
     dataType : 'json',
   }).then(data => console.log(data)).catch(e => console.log(e))
 }

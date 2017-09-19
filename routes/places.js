@@ -10,6 +10,11 @@ router.get('/map',ensureLoggedIn("/login"), (req,res,next)=>{
 router.get('/place',ensureLoggedIn("/login"),(req,res, next)=>{
   res.render('place')
 })
+router.get('/places', (req,res,next)=>{
+  Place.find({},(err, places)=>{
+    res.status(200).json(places);
+  }).catch( e => res.status(500).json({error:e.message}));
+})
 
 router.post('/add/place',ensureLoggedIn("/login"), (req, res, next)=>{
   console.log(req.body.address)

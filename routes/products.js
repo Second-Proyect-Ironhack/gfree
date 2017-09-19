@@ -8,9 +8,6 @@ router.get('/:id/add/product',  (req, res, next)=>{
   res.render('addProduct', {placeId : req.params.id})
 })
 router.post('/:id/add/product',upload.single('picture'),(req, res, next)=>{
-  // console.log("FORM =>", req.body)
-  // console.log("PARAM =>", req.params)
-  // console.log("USER =>", req.user)
   const newProduct = new Product({
     name : req.body.name,
     description: req.body.description,
