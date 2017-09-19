@@ -15,7 +15,7 @@ router.post('/add/place',ensureLoggedIn("/login"), (req, res, next)=>{
   console.log(req.body.address)
   Place.findOne({"address": req.body.address},(err, place)=>{
     if(place !== null){
-      res.redirect(map,{err: "that place is already defined"})
+      res.redirect("/map",{err: "that place is already defined"})
       return
     }
     const newPlace= new Place({
