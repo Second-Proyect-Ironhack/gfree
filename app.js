@@ -56,7 +56,7 @@ app.use((req,res,next) =>{
 app.use(session({
   secret: "asdfasdf",
   cookie: {
-    maxAge: 60000
+    maxAge: 600000
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,

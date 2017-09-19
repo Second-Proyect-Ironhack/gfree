@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Place = require('../models/Place')
+const Product = require('../models/Product')
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
 router.get('/map', (req,res,next)=>{
@@ -8,8 +9,15 @@ router.get('/map', (req,res,next)=>{
 })
 
 router.get('/place',ensureLoggedIn("/login"),(req,res, next)=>{
-  res.render('place')
+  Product.find({}, (err, products) => {
+    if (err) { return next(err); }
+    })
+    console.log(products)
+  res.render('place', {
+      products: products
+    })
 })
+
 router.get('/places', (req,res,next)=>{
   Place.find({},(err, places)=>{
     res.status(200).json(places);
@@ -39,10 +47,11 @@ router.post('/add/place',ensureLoggedIn("/login"), (req, res, next)=>{
   })
 })
 router.get("/place/:id",ensureLoggedIn("/login"),(req,res,next)=>{
-  const myId = req.params.id
-  Place.findOne({ _id : myId}, (err, place)=>{
-    res.render("place", {place})
-  })
+  Product.find({refToPlace:req.params.id})
+  .populate('refToPlace')
+  .then(result => {
+      console.log(result);
+      res.render ("place" , {product:result})})
 
 })
 module.exports = router
