@@ -1,0 +1,21 @@
+<h2>Edit your account</h2>
+
+<form action="/<%= user._id %>/edit" method="POST" id="form-container" enctype="multipart/form-data">
+  <label for="username">Username</label>
+  <input id="username" type="text" name="username" value="<%= user.username %>">
+  <br><br>
+  <label for="email">Email</label>
+  <input id="email" type="email" name="email" value="<%= user.email %>">
+  <br><br>
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" value="<%= user.password %>">
+
+  <% if (typeof message !== "undefined") { %>
+    <div class="error-message"><%= message %></div>
+  <% } %>
+  <br><br>
+  <label for="picture">Profile picture</label>
+  <input id="picture" type="file" name="filename" value="<%= user.picture.pic_name %>">
+  <br><br>
+
+  <button>Save changes</button>
