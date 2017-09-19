@@ -3,7 +3,7 @@ const router = express.Router()
 const Place = require('../models/Place')
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
-router.get('/map',ensureLoggedIn("/login"), (req,res,next)=>{
+router.get('/map', (req,res,next)=>{
   res.render('map')
 })
 
