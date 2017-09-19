@@ -48,7 +48,7 @@ router.post('/map', (req, res, next)=>{
           lng : req.body.lng
         },
         picture : req.body.picture
-      }).save().catch(e => next(e))
+      }).save().then(()=> console.log("done")).catch(e => next(e))
 
 })
 
