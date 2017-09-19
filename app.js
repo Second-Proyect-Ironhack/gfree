@@ -69,8 +69,7 @@ require('./passport/local');
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./config/serializers');
-require('./config/local');
+
 app.use(passport.initialize())
 app.use(passport.session())
 // uncomment after placing your favicon in /public
@@ -93,6 +92,7 @@ app.use('/', authRoutes);
 app.get('/', (req,res) => {console.log(req.user)
 res.render('index',{user:req.user})});
 app.use('/', places);
+app.use('/', products)
 
 
 app.use(errors)

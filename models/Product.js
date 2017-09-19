@@ -4,8 +4,8 @@ const Schema   = mongoose.Schema;
 const productSchema = new Schema({
   name: String,
   description: String,
-  refToPlace: String,
-  refToUser: String,
+  refToPlace: Schema.Types.ObjectId,
+  refToUser: Schema.Types.ObjectId,
   picture: {
     name: String,
     pic_path: String,

@@ -21,6 +21,7 @@ router.post('/add/place',ensureLoggedIn("/login"), (req, res, next)=>{
     const newPlace= new Place({
       name: req.body.name,
       address : req.body.address,
+      refToUser: req.user._id,
       coordinates : {
         lat : req.body.lat,
         lng : req.body.lng
