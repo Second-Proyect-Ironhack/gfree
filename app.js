@@ -21,7 +21,7 @@ const authRoutes = require('./routes/auth');
 const debug = require('debug')("app:"+path.basename(__filename).split('.')[0]);
 
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGO_URI).then(() => console.log("connected to DB"));
+  mongoose.connect(process.env.MONGO_URI).then(() => console.log("connected to DB"));
 
         if (process.env.NODE_ENV === 'development') {
           require('dotenv').config()
