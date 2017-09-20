@@ -23,4 +23,17 @@ router.post('/:id/add/product',upload.single('picture'),(req, res, next)=>{
   res.redirect('/map')
 })
 
+router.post('/products', (req,res,next)=>{
+  const productId=req.body.id
+  const updates = {
+        delete: req.body.delete,
+      }
+      console.log(productId)
+      console.log(updates)
+  Product.findByIdAndUpdate(productId, updates, (err, product))
+  .then(()=>res.status(200).json(products))
+  .catch((e) =>res.status(500).json({error:e.message}));
+})
+
+
 module.exports = router

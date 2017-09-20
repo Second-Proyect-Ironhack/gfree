@@ -1,13 +1,18 @@
+
 <h1><%= place.name  %></h1>
 <img src="<%= place.picture %>" height=200 width=300><br>
 <p><%= place.address  %></p>
 <h2>Product list</h2>
 <ul>
   <% products.forEach((product) => { %>
-    <li>
+    <li class="value" data-id="<%= product._id %>" value="<%= product.delete %>">
       <%= product.name %><br>
       <%= product.description %><br><br>
-      <button>Delete</button><br><br>
+      <button class="delete">Delete</button><br><br>
     </li>
   <%  }) %>
 </ul>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/button-delete.js"></script>
