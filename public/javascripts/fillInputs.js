@@ -7,3 +7,7 @@ function fillInputs(place) {
   $("#placePicture").val(place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}))
   }
 }
+
+function clearFields(){
+  
+}

@@ -10,9 +10,9 @@ $("#create").on("click", function(e){
     method: "POST",
     url : "http://localhost:3000/map",
     data : info,
-    dataType: "text",
-    success: getPlaces(map),
-    next: marker.setMap(map)
-
+    dataType: "json"
+  }).then(()=> {
+    getPlaces(map)
+    marker.setMap(map)
   })
 })
