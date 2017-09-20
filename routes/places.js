@@ -8,19 +8,7 @@ router.get('/map', (req,res,next)=>{
   res.render('map', {apiKey: "AIzaSyAX6RsStZrkIKLH3c3l0ghnDzGuwrUUC9E"})
 })
 
-<<<<<<< HEAD
-=======
-// router.get('/place',ensureLoggedIn("/login"),(req,res, next)=>{
-//   Product.find({}, (err, products) => {
-//     if (err) { return next(err); }
-//     })
-//     console.log(products)
-//   res.render('place', {
-//       products: products
-//     })
-// })
 
->>>>>>> refs/remotes/origin/dev
 router.get('/places', (req,res,next)=>{
   Place.find({},(err, places)=>{
     res.status(200).json(places);
