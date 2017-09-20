@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
+    "start": "NODE_ENV=development nodemon ./bin/www"    
+=======
     "start": "node ./bin/www",
     "start-dev": "NODE_ENV=development nodemon ./bin/www"
+>>>>>>> 3f674d2caa728dbb1d6cd37d64ff2e39dd23e118
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
