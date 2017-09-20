@@ -28,5 +28,10 @@ function show(arr){
 )
 }
 function setInfoWindowContent(elem){
-    infowindow.setContent(`<div><h2>${elem.name}</h2><img src=${elem.picture}<p>${elem.address}</p><a href="/place/${elem._id}">GO</a></div>`)
+  if(elem.picture !== undefined){
+    infowindow.setContent(`<div><h2>${elem.name}</h2><img src="${elem.picture}" width="100"><p>${elem.address}</p><a href="/place/${elem._id}">GO</a></div>`)
+}
+else{
+  infowindow.setContent(`<div><h2>${elem.name}</h2><p>${elem.address}</p><a href="/place/${elem._id}">GO</a></div>`)
+}
 }
