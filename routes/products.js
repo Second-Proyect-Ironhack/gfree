@@ -3,24 +3,32 @@ const router = express.Router()
 const Product = require('../models/Product')
 const multer = require('multer')
 const upload = multer({dest:'.public/uploads/'})
+const Place = require('../models/Place')
 
-router.get('/place/:id/add/product',  (req, res, next)=>{
-  res.render('addProduct', {placeId : req.params.id})
+router.get('/place/:id/add/product/:name',  (req, res, next)=>{
+  res.render('addProduct', {placeId : req.params.id, placeName : req.params.name})
 })
-router.post('/:id/add/product',upload.single('picture'),(req, res, next)=>{
+router.post('/:id/add/product/:name',upload.single('picture'),(req, res, next)=>{
   const newProduct = new Product({
     name : req.body.name,
     description: req.body.description,
     refToUser : req.user._id,
-    refToPlace: req.params.id,
+    refToPlace: [req.params.id],
     picture: {
       pic_path:`/uploads/${req.file.filename}`,
       pic_name: req.file.originalname
     }
   }).save()
-    .then(()=> res.redirect(`/place/${req.params.id}`))
+    .then(()=>{
+      Place.find({name : req.params.name})
+      .then(result => {
+        const updates = {refToPlace : result.map((e) => e._id)}
+        Product.findOneAndUpdate({name : req.body.name}, updates)
+        .then(res.redirect(`/place/${req.params.id}`))
+      })
+    })
     .catch((e)=> next(e))
-  res.redirect('/map')
+
 })
 
 router.post('/products', (req,res,next)=>{
