@@ -4,7 +4,7 @@ const Product = require('../models/Product')
 const multer = require('multer')
 const upload = multer({dest:'.public/uploads/'})
 
-router.get('/:id/add/product',  (req, res, next)=>{
+router.get('/place/:id/add/product',  (req, res, next)=>{
   res.render('addProduct', {placeId : req.params.id})
 })
 router.post('/:id/add/product',upload.single('picture'),(req, res, next)=>{
@@ -30,10 +30,14 @@ router.post('/products', (req,res,next)=>{
       }
       console.log(productId)
       console.log(updates)
-  Product.findByIdAndUpdate(productId, updates, (err, product))
-  .then(()=>res.status(200).json(products))
-  .catch((e) =>res.status(500).json({error:e.message}));
-})
-
-
+  if(updates.delete>=5){
+    Product.findByIdAndRemove(productId, updates)
+      .then( (products)=> res.status(200).json(products))
+      .catch( err => res.status(500).json({err}))
+  } else{
+  Product.findByIdAndUpdate(productId, updates)
+    .then( (products)=> res.status(200).json(products))
+    .catch( err => res.status(500).json({err}))
+}
+});
 module.exports = router

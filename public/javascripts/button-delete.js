@@ -3,8 +3,8 @@ $(".delete").on("click", function(e){
   $(this).parent().hide()
 
   const updateInfo = {
-    id: $(".value").attr("data-id"),
-    delete: $(".value").val()+1,
+    id: $(this).parent().attr("data-id"),
+    delete: $(this).parent().val()+1,
   };
 
  $.ajax({
@@ -13,7 +13,5 @@ $(".delete").on("click", function(e){
   data: updateInfo,
   dataType: "json",
 }).then(() => {
-    console.log('Update SUCCESS!');
-    console.log(patchResponse);
   }).catch(e => console.log(e))
 })
