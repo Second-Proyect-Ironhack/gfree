@@ -1,5 +1,6 @@
 var map;
 var marker;
+var infowindow
 function initMap() {
   var position = {
     lat: 41.3977381,
@@ -19,14 +20,15 @@ function initMap() {
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
 
-  var infowindow = new google.maps.InfoWindow();
+infowindow = new google.maps.InfoWindow();
   marker = new google.maps.Marker({
     map: map,
     anchorPoint: new google.maps.Point(0, -29)
   });
 
-  getPlaces(map)
+  getPlaces(infowindow ,map)
   marker.setMap(map)
+
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
@@ -64,6 +66,7 @@ function initMap() {
     } else {
       infowindow.setContent('<div><h3>' + place.name + '</h3><br>' + place.formatted_address);
     }
+
     infowindow.open(map, marker);
     console.log(place.geometry.location.lat())
      fillInputs(place)

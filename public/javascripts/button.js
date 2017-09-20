@@ -1,18 +1,24 @@
 $("#create").on("click", function(e){
   e.preventDefault()
+  if($("#placeAddress").val() !== undefined){
   const info = {
     name: $("#placeName").val(),
     address:$("#placeAddress").val(),
     lat: $("#placeLat").val(),
-    lng: $("#placeLng").val()
+    lng: $("#placeLng").val(),
+    picture: $("#placePicture").val()
   }
-  $.ajax({
+    $.ajax({
     method: "POST",
     url : "http://localhost:3000/map",
     data : info,
     dataType: "json"
   }).then(()=> {
+    clearFields()
     getPlaces(map)
     marker.setMap(map)
   })
+}else{
+  alert("Please enter a Place")
+}
 })

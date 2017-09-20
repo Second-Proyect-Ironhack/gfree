@@ -9,5 +9,5 @@ function fillInputs(place) {
 }
 
 function clearFields(){
-  
+  $("#postForm").children().val("")
 }
