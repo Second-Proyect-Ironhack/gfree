@@ -72,7 +72,6 @@ infowindow = new google.maps.InfoWindow();
     console.log(place.geometry.location.lat())
      fillInputs(place)
   });
-
 }
 
 function locate(position, map) {
