@@ -1,13 +1,16 @@
 
 $(".translate").on("click", function(e){
   e.preventDefault()
+  const sourceLanguage = $("#source").val()
+  const targetLanguage = $("#target").val()
   const itComesFrom = $(".translation")
   console.log(itComesFrom)
   $(itComesFrom).each((index)=>{
     const product = itComesFrom[index]
     const toTranslate = $(product).text()
     console.log(toTranslate)
-    translateProduct(toTranslate,"es", "en", product)
+    translateProduct(toTranslate,sourceLanguage, targetLanguage, product)
+
   })
   })
 
@@ -20,7 +23,10 @@ function translateProduct(textoAtraducir,lang1, lang2, toDraw){
     method:"get",
     url: `https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170921T144345Z.c534b7b5e71ad754.6c52aeebbd7f50cdccda5c09e8b9e59fe00aff40&lang=${language}&text=${texto}"&#8221;`,
     dataType: "json",
-  }).then((data)=> showText(data,toDraw))
+  }).then((data)=> {
+    showText(data,toDraw)
+    updateLanguages(lang2)
+  })
     .catch(e => console.log(e))
 }
 function showText(text, element){
@@ -33,4 +39,10 @@ function showText(text, element){
   const textForTittle = arrayOfTrans.splice(1,wordsInTittle)
   $(title).text(textForTittle[0])
   $(description).text(arrayOfTrans.join(" "))
+}
+
+function updateLanguages(lang){
+  $("#source option:selected").removeAttr("selected")
+  $("#source option[value='"+lang+"']").attr("selected", "selected")
+
 }

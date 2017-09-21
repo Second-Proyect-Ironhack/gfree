@@ -3,6 +3,29 @@
 <img src="<%= place.picture %>" height=200 width=300><br>
 <p><%= place.address  %></p>
 <h2>Product list</h2>
+<form>
+  <select id="source" disabled>
+    <option value="es" selected>Spanish</option>
+    <option value="fr">French</option>
+    <option value="en">English</option>
+    <option value="de">German</option>
+    <option value="zh">Chinese</option>
+    <option value="ja">Japanese</option>
+    <option value="ru">Rusian</option>
+    <option value="eo">Esperanto</option>
+  </select>
+  <select id="target">
+    <option value="es">Spanish</option>
+    <option value="fr">French</option>
+    <option value="en">English</option>
+    <option value="de">German</option>
+    <option value="zh">Chinese</option>
+    <option value="ja">Japanese</option>
+    <option value="ru">Rusian</option>
+    <option value="eo">Esperanto</option>
+  </select>
+  <button class="translate">Translate</button>
+</form>
 <ul>
   <% products.forEach((product) => { %>
     <% let clicked = false;%>
@@ -20,7 +43,6 @@
         <p><%= product.description %></p>
       </div>
       <button class="delete">Delete</button>
-      <button class="translate">Translate</button>
     </li>
     <%}%>
   <%  }) %>
