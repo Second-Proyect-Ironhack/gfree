@@ -1,7 +1,7 @@
 function getPlaces(){
   $.ajax ({
     method: "get",
-    url : "http://localhost:3000/places",
+    url : "/places",
     dataType : 'json',
   }).then(places =>   {
       show(places)

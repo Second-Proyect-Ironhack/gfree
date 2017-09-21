@@ -9,7 +9,7 @@ $(".delete").on("click", function(e){
 
  $.ajax({
   method: 'POST',
-  url: "http://localhost:3000/products",
+  url: "/products",
   data: updateInfo,
   dataType: "json",
 }).then(() => {
