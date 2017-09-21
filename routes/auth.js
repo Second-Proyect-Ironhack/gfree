@@ -89,7 +89,7 @@ router.post('/:id/edit',ensureLoggedIn(), upload.single('filename'),(req,res)=>{
   const passwordChange = req.body.password;
 
   const salt = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(password, salt);
+  const hashPass = bcrypt.hashSync(passwordChange, salt);
 
   const updates = {
         username: req.body.username,
