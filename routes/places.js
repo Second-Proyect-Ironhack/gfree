@@ -33,7 +33,7 @@ router.post('/map', (req, res, next)=>{
 router.get("/place/:id",ensureLoggedIn("/login"),(req,res,next)=>{
   Product.find({refToPlace:req.params.id})
   .then(result => {
-    Place.findOne({_id:req.params.id}).then(result2=>res.render ("place" , {place:result2 ,products:result}))})
+    Place.findOne({_id:req.params.id}).then(result2=>res.render ("place" , {place:result2 ,products:result, userId : req.user._id}))})
 
 
 

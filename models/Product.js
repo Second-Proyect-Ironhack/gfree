@@ -5,7 +5,7 @@ const productSchema = new Schema({
   name: String,
   description: String,
   refToPlace: [Schema.Types.ObjectId],
-  refToUser: Schema.Types.ObjectId,
+  refToUser: [Schema.Types.ObjectId],
   delete:{type:Number, default:0},
   picture: {
     name: String,

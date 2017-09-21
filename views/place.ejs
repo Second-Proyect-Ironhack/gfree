@@ -5,11 +5,21 @@
 <h2>Product list</h2>
 <ul>
   <% products.forEach((product) => { %>
+    <% let clicked = false;%>
+    <% for(var i = 0; i< product.refToUser.length; i++){%>
+      <%if(product.refToUser[i].toString() === userId.toString()){%>
+      <%  clicked = true;%>
+      <%}%>
+    <%}%>
+    <%console.log(clicked)%>
+    <%console.log(userId)%>
+      <%if(clicked !== true){%>
     <li class="value" data-id="<%= product._id %>" value="<%= product.delete %>">
       <%= product.name %><br>
       <%= product.description %><br><br>
       <button class="delete">Delete</button><br><br>
     </li>
+    <%}%>
   <%  }) %>
 </ul>
 <a href="<%= place._id %>/add/product/<%= place.name %>">Add product</a>

@@ -12,7 +12,7 @@ router.post('/:id/add/product/:name',upload.single('picture'),(req, res, next)=>
   const newProduct = new Product({
     name : req.body.name,
     description: req.body.description,
-    refToUser : req.user._id,
+    refToUser : [],
     picture: {
       pic_path:`/uploads/${req.file.filename}`,
       pic_name: req.file.originalname
@@ -32,14 +32,13 @@ router.post('/products', (req,res,next)=>{
   const updates = {
         delete: req.body.delete,
       }
-      console.log(productId)
-      console.log(updates)
   if(updates.delete>=5){
     Product.findByIdAndRemove(productId, updates)
       .then( (products)=> res.status(200).json(products))
       .catch( err => res.status(500).json({err}))
   } else{
-  Product.findByIdAndUpdate(productId, updates)
+
+  Product.findByIdAndUpdate(productId, {$push:{refToUser : req.user._id}, $set:{delete : req.body.delete}})
     .then( (products)=> res.status(200).json(products))
     .catch( err => res.status(500).json({err}))
 }
