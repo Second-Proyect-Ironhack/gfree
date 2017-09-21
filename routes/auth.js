@@ -86,11 +86,15 @@ router.get('/edit',ensureLoggedIn(),(req,res)=>{
 
 router.post('/:id/edit',ensureLoggedIn(), upload.single('filename'),(req,res)=>{
   const userId = req.params.id;
-  console.log(userId)
+  const passwordChange = req.body.password;
+
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(passwordChange, salt);
+
   const updates = {
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: hashPass,
         picture : {
                       pic_path: `/uploads/${req.file.filename}`,
                       pic_name : req.file.originalname
