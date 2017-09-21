@@ -10,7 +10,7 @@ $("#create").on("click", function(e){
   }
     $.ajax({
     method: "POST",
-    url : "http://localhost:3000/map",
+    url : "/map",
     data : info,
     dataType: "json"
   }).then(()=> {

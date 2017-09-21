@@ -13,22 +13,18 @@ router.post('/:id/add/product/:name',upload.single('picture'),(req, res, next)=>
     name : req.body.name,
     description: req.body.description,
     refToUser : req.user._id,
-    refToPlace: [req.params.id],
     picture: {
       pic_path:`/uploads/${req.file.filename}`,
       pic_name: req.file.originalname
     }
-  }).save()
-    .then(()=>{
-      Place.find({name : req.params.name})
-      .then(result => {
-        const updates = {refToPlace : result.map((e) => e._id)}
-        Product.findOneAndUpdate({name : req.body.name}, updates)
-        .then(res.redirect(`/place/${req.params.id}`))
-      })
-    })
-    .catch((e)=> next(e))
-
+})
+  Place.find({name : req.params.name})
+        .then((result)=>{
+          const updates = {refToPlace : result.map((e)=>e._id)}
+          newProduct.refToPlace = updates.refToPlace
+          newProduct.save()
+                    .then(res.redirect(`/place/${req.params.id}`))
+})
 })
 
 router.post('/products', (req,res,next)=>{
