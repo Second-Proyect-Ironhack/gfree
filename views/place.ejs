@@ -14,10 +14,13 @@
     <%console.log(clicked)%>
     <%console.log(userId)%>
       <%if(clicked !== true){%>
-    <li class="value" data-id="<%= product._id %>" value="<%= product.delete %>">
-      <%= product.name %><br>
-      <%= product.description %><br><br>
-      <button class="delete">Delete</button><br><br>
+    <li class="value" data-id="<%= product._id %>"value="<%= product.delete %>">
+      <div class="translation">
+        <h3><%= product.name %></h3>
+        <p><%= product.description %><p>
+      </div>
+      <button class="delete">Delete</button>
+      <button class="translate">Translate</button>
     </li>
     <%}%>
   <%  }) %>
@@ -26,3 +29,4 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/button-delete.js"></script>
+<script type="text/javascript" src="/javascripts/translations.js"></script>
