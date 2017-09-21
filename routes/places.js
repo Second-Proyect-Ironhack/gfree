@@ -7,6 +7,17 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 router.get('/map', (req,res,next)=>{
   res.render('map', {apiKey: "AIzaSyAX6RsStZrkIKLH3c3l0ghnDzGuwrUUC9E"})
 })
+router.get("/restaurants",(req, res, next)=>{
+  Place.find({rol : "Restaurant"})
+        .then((places)=>res.status(200).json(places))
+        .catch( e => res.status(500).json({error:e.message}))
+})
+router.get("/shop",(req, res, next)=>{
+  Place.find({rol : "Shop"})
+        .then((places)=>res.status(200).json(places))
+        .catch( e => res.status(500).json({error:e.message}))
+})
+
 
 router.get('/places', (req,res,next)=>{
   Place.find({},(err, places)=>{
@@ -15,7 +26,7 @@ router.get('/places', (req,res,next)=>{
 })
 
 router.post('/map', (req, res, next)=>{
-  console.log(req.body)
+    console.log(req.body)
       const newPlace= new Place({
         name: req.body.name,
         address : req.body.address,
@@ -23,6 +34,7 @@ router.post('/map', (req, res, next)=>{
           lat : req.body.lat,
           lng : req.body.lng
         },
+        rol : req.body.rol,
         picture : req.body.picture
       }).save()
       .then(p => res.status(200).json(p))

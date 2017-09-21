@@ -3,6 +3,11 @@ const Schema   = mongoose.Schema;
 
 const placeSchema = new Schema({
   name: String,
+  rol : {
+    type : String,
+    enum : ["Shop", "Restaurant"],
+    default : "Shop"
+  },
   description: String,
   address: String,
   coordinates: {

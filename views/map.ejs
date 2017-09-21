@@ -1,12 +1,21 @@
 <form id="postForm">
   <label for="name">Place's name</label>
   <input type="text" id="placeName"name="name" value="">
+  <input type="radio" name="rol" value="Shop">Shop
+  <input type="radio" name="rol" checked="checked" value="Restaurant">Restaurant
   <input type="text" id="autocomplete">
   <input type="hidden" id="placeLat" name="lat" value="">
   <input type="hidden" id="placeLng" name="lng" value="">
   <input type="hidden" id="placeAddress" name="address" value="">
   <input type="hidden" id="placePicture"name="picture" value="">
   <button id="create">Pick </button>
+</form>
+
+<form>
+  <label for="filter">Look for:</label>
+  <input type="checkbox" name="filter" value="Shop" checked="checked"> Shop
+  <input type="checkbox" name="filter" value="Restaurant" checked="checked"> Restaurant
+  <button id="filterPlace">Search</button>
 </form>
 
 
@@ -16,4 +25,5 @@
 <script type="text/javascript" src="javascripts/fillInputs.js"></script>
 <script type="text/javascript" src="javascripts/getPlaces.js"></script>
 <script type="text/javascript" src="javascripts/button.js"></script>
+<script type="text/javascript" src="javascripts/filter.js"></script>
 <script type="text/javascript" src="javascripts/main.js"></script>

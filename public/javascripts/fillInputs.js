@@ -9,5 +9,6 @@ function fillInputs(place) {
 }
 
 function clearFields(){
-  $("#postForm").children().val("")
+  $("#placeAddress").val("")
+  $("#autocomplete").val("")
 }

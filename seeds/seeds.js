@@ -4,10 +4,6 @@ const Product = require('../models/Product')
 
 const mongoose = require("mongoose");
   mongoose.connect(process.env.MONGO_URI).then(() => console.log("connected to DB"));
-
-        if (process.env.NODE_ENV === 'development') {
-          require('dotenv').config()
-        }
 const users = [
   {
     name: 'Juan',

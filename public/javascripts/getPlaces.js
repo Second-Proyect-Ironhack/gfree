@@ -1,7 +1,7 @@
-function getPlaces(){
+function getPlaces(url){
   $.ajax ({
     method: "get",
-    url : "/places",
+    url : `/${url}`,
     dataType : 'json',
   }).then(places =>   {
       show(places)
@@ -9,8 +9,9 @@ function getPlaces(){
 }
 
 function show(arr){
+
   arr.forEach(obj =>{
-    return new google.maps.Marker({
+    markers.push(new google.maps.Marker({
       title: obj.name,
       map: map,
       position: {
@@ -20,13 +21,16 @@ function show(arr){
     }).addListener("click", function(){
       setInfoWindowContent(obj)
       infowindow.open(map, this)
-    })
+    }))
 
     infowindow.close(map, this)
   }
 
 )
 }
+
+
+
 function setInfoWindowContent(elem){
   if(elem.picture !== undefined){
     infowindow.setContent(`<div><h2>${elem.name}</h2><img src="${elem.picture}" width="100"><p>${elem.address}</p><a href="/place/${elem._id}">GO</a></div>`)

@@ -1,6 +1,7 @@
 var map;
 var marker;
 var infowindow
+var markers = []
 function initMap() {
   var position = {
     lat: 41.3977381,
@@ -26,8 +27,8 @@ infowindow = new google.maps.InfoWindow();
     anchorPoint: new google.maps.Point(0, -29)
   });
 
-  getPlaces(infowindow ,map)
-  marker.setMap(map)
+   getPlaces("places")
+  // marker.setMap(map)
 
 
   autocomplete.addListener('place_changed', function() {
