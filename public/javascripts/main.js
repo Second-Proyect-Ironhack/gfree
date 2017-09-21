@@ -86,3 +86,5 @@ function locate(position, map) {
     })
   }
 }
+
+initMap();
