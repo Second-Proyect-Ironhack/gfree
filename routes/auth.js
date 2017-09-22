@@ -1,4 +1,6 @@
 const User = require("../models/User");
+const Product = require('../models/Product')
+const Place = require('../models/Place')
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 const path = require('path');
@@ -77,7 +79,10 @@ router.get('/home', ensureLoggedIn(),(req,res) =>{
 });
 
 router.get('/profile',ensureLoggedIn(),(req,res)=>{
-  res.render('profile', {user: req.user})
+      Place.find({})
+          .then((places)=>(  res.render('profile', {user: req.user, places : places})))
+
+
 })
 
 router.get('/edit',ensureLoggedIn(),(req,res)=>{

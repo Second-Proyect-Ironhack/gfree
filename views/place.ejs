@@ -4,14 +4,13 @@
 <% place.favorite.forEach((user)=>{%>
     <%if(user.toString() === userId.toString()){%>
       <%fav = true%>
-    <%}%>
+  <%}%>
 <%})%>
 <%if(fav !== true){%>
 <a href="/add/favorite/<%=place._id%>" data-value ="<%=place._id%>" id="love">LoveIt</a>
-<%}else{%>
+<%} else{%>
   <a href="#" data-value ="<%=place._id%>" id="love">LoveIt</a>
-  <%}%>
-
+<%}%>
 <img src="<%= place.picture %>" height=200 width=300><br>
 <p><%= place.address  %></p>
 <%if(place.rol == "Shop" ){%>
