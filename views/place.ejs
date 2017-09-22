@@ -2,7 +2,11 @@
 <h1><%= place.name  %></h1>
 <img src="<%= place.picture %>" height=200 width=300><br>
 <p><%= place.address  %></p>
+<%if(place.rol == "Shop" ){%>
 <h2>Product list</h2>
+<%}else{%>
+  <h2>Dish list</h2>
+  <%}%>
 <form>
   <select id="source" disabled>
     <option value="es" selected>Spanish</option>
@@ -47,8 +51,14 @@
     <%}%>
   <%  }) %>
 </ul>
+<%if(place.rol == "Shop" ){%>
 <a href="<%= place._id %>/add/product/<%= place.name %>">Add product</a>
+<%}else{%>
+  <a href="<%= place._id %>/add/product/<%= place.name %>">Add dish</a>
+
+  <%}%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/button-delete.js"></script>
+<script type="text/javascript" src="/javascripts/detect-language.js"></script>
 <script type="text/javascript" src="/javascripts/translations.js"></script>

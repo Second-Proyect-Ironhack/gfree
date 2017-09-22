@@ -4,11 +4,11 @@ $(".translate").on("click", function(e){
   const sourceLanguage = $("#source").val()
   const targetLanguage = $("#target").val()
   const itComesFrom = $(".translation")
-  console.log(itComesFrom)
+
   $(itComesFrom).each((index)=>{
     const product = itComesFrom[index]
     const toTranslate = $(product).text()
-    console.log(toTranslate)
+
     translateProduct(toTranslate,sourceLanguage, targetLanguage, product)
 
   })
@@ -17,7 +17,6 @@ $(".translate").on("click", function(e){
 
 function translateProduct(textoAtraducir,lang1, lang2, toDraw){
    const texto = textoAtraducir.split(" ").join("+")
-   console.log(texto)
   const language = lang1 + "-" + lang2
   $.ajax({
     method:"get",
