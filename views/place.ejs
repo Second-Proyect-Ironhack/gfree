@@ -2,13 +2,16 @@
 <h1><%= place.name  %></h1>
 <%  let fav = false%>
 <% place.favorite.forEach((user)=>{%>
-    if(user.toStrin() === userId.toString()){
-      fav = true
-    }
+    <%if(user.toString() === userId.toString()){%>
+      <%fav = true%>
+    <%}%>
 <%})%>
 <%if(fav !== true){%>
 <a href="/add/favorite/<%=place._id%>" data-value ="<%=place._id%>" id="love">LoveIt</a>
-<%}%>
+<%}else{%>
+  <a href="#" data-value ="<%=place._id%>" id="love">LoveIt</a>
+  <%}%>
+
 <img src="<%= place.picture %>" height=200 width=300><br>
 <p><%= place.address  %></p>
 <%if(place.rol == "Shop" ){%>
