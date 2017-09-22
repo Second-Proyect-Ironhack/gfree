@@ -1,24 +1,37 @@
+<div class="container">
+  <%if(place.picture === ""){%>
+  <div class="col m10 pull-m1 product-header" style="background-image:url(http://www.bcnrestaurantes.com/img/slider/004.jpg)">
+  <%}else{%>
+  <div class="col m10 pull-m1 product-header" style="background-image:url(<%=place.picture%>)">
+  <%}%>
+  <div class="col m10 pull-m1 product-header">
+  <h1 class="res-name place-title"><%= place.name  %></h1>
+  <h5 class="address"><%= place.address  %></h5>
+  <%  let fav = false%>
+  <% place.favorite.forEach((user)=>{%>
+      <%if(user.toString() === userId.toString()){%>
+        <%fav = true%>
+    <%}%>
+  <%})%>
+  <%if(fav !== true){%>
+  <a href="/add/favorite/<%=place._id%>" data-value ="<%=place._id%>" id="love"><i class="material-icons medium">star_border</i></a>
+  <%} else{%>
+    <a href="#" data-value ="<%=place._id%>" id="love"><i class="material-icons medium">star</i></a>
+  <%}%>
+  <a href="<%= place._id %>/add/product/<%= place.name %>" class="add">ADD</a>
+</div>
 
-<h1><%= place.name  %></h1>
-<%  let fav = false%>
-<% place.favorite.forEach((user)=>{%>
-    <%if(user.toString() === userId.toString()){%>
-      <%fav = true%>
-  <%}%>
-<%})%>
-<%if(fav !== true){%>
-<a href="/add/favorite/<%=place._id%>" data-value ="<%=place._id%>" id="love">LoveIt</a>
-<%} else{%>
-  <a href="#" data-value ="<%=place._id%>" id="love">LoveIt</a>
-<%}%>
-<img src="<%= place.picture %>" height=200 width=300><br>
-<p><%= place.address  %></p>
+</div>
+<!-- De aqui hacia arriba solo header -->
+<div class="col m10 pull-m1 list-title">
 <%if(place.rol == "Shop" ){%>
-<h2>Product list</h2>
+  <h5 class="center-align">Product list</h5>
 <%}else{%>
-  <h2>Dish list</h2>
+  <h5 class="center-align">Dish list</h5>
   <%}%>
-<form>
+</div>
+
+<!-- <form>
   <select id="source" disabled>
     <option value="es" selected>Spanish</option>
     <option value="fr">French</option>
@@ -40,8 +53,8 @@
     <option value="eo">Esperanto</option>
   </select>
   <button class="translate">Translate</button>
-</form>
-<ul>
+</form> -->
+<ul class="collapsible" data-collapsible="accordion">
   <% products.forEach((product) => { %>
     <% let clicked = false;%>
     <% for(var i = 0; i< product.refToUser.length; i++){%>
@@ -53,22 +66,16 @@
     <%console.log(userId)%>
       <%if(clicked !== true){%>
     <li class="value" data-id="<%= product._id %>"value="<%= product.delete %>">
-      <div class="translation">
-        <h3><%= product.name %></h3>
-        <p><%= product.description %></p>
-      </div>
-      <button class="delete">Delete</button>
+        <div class="translation collapsible-header"><img src="<%= product.picture.pic_path %>"><h5><%= product.name %></h5><a href="#" class="delete"><i class="material-icons small">cancel</i></a></div>
+        <div class="collapsible-body"><span><%= product.description %></span></div>
+        <!-- <h3><%= product.name %></h3>
+        <p><%= product.description %></p> -->
     </li>
     <%}%>
   <%  }) %>
 </ul>
-<%if(place.rol == "Shop" ){%>
-<a href="<%= place._id %>/add/product/<%= place.name %>">Add product</a>
-<%}else{%>
-  <a href="<%= place._id %>/add/product/<%= place.name %>">Add dish</a>
 
-  <%}%>
-
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/button-delete.js"></script>
 <script type="text/javascript" src="/javascripts/detect-language.js"></script>

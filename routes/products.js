@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../models/Product')
 const multer = require('multer')
-const upload = multer({dest:'.public/uploads/'})
+const upload = multer({dest:'public/uploads/'})
 const Place = require('../models/Place')
 
 router.get('/place/:id/add/product/:name',  (req, res, next)=>{
