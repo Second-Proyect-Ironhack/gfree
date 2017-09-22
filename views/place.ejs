@@ -1,5 +1,14 @@
 
 <h1><%= place.name  %></h1>
+<%  let fav = false%>
+<% place.favorite.forEach((user)=>{%>
+    if(user.toStrin() === userId.toString()){
+      fav = true
+    }
+<%})%>
+<%if(fav !== true){%>
+<a href="/add/favorite/<%=place._id%>" data-value ="<%=place._id%>" id="love">LoveIt</a>
+<%}%>
 <img src="<%= place.picture %>" height=200 width=300><br>
 <p><%= place.address  %></p>
 <%if(place.rol == "Shop" ){%>
@@ -61,4 +70,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/button-delete.js"></script>
 <script type="text/javascript" src="/javascripts/detect-language.js"></script>
+<script type="text/javascript" src="/javascripts/favorite-place.js"></script>
 <script type="text/javascript" src="/javascripts/translations.js"></script>

@@ -8,6 +8,7 @@ const placeSchema = new Schema({
     enum : ["Shop", "Restaurant"],
     default : "Shop"
   },
+  favorite : [Schema.Types.ObjectId],
   description: String,
   address: String,
   coordinates: {
