@@ -23,6 +23,8 @@ function show(arr){
       infowindow.open(map, this)
     }))
 
+
+
     infowindow.close(map, this)
   }
 

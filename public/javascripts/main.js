@@ -50,7 +50,7 @@ infowindow = new google.maps.InfoWindow();
       map.setZoom(17); // Why 17? Because it looks good.
     }
     marker.setIcon( /** @type {google.maps.Icon} */ ({
-      url: place.icon,
+      // url: place.icon,
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),
