@@ -1,5 +1,6 @@
 $("#create").on("click", function(e){
   e.preventDefault()
+
   if($("#placeAddress").val() !== ""){
   const info = {
     name: $("#placeName").val(),
@@ -9,6 +10,7 @@ $("#create").on("click", function(e){
     picture: $("#placePicture").val(),
     rol : $('input[type=radio]:checked').val()
   }
+  console.log(info)
     $.ajax({
     method: "POST",
     url : "/map",

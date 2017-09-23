@@ -1,26 +1,50 @@
-<h2>Hello <%= user.username %> </h2><br>
-<form id="postForm">
-  <label for="name">Place's name</label>
-  <input type="text" id="placeName"name="name" value="">
-  <input type="radio" name="rol" value="Shop">Shop
-  <input type="radio" name="rol" checked="checked" value="Restaurant">Restaurant
-  <input type="text" id="autocomplete">
-  <input type="hidden" id="placeLat" name="lat" value="">
-  <input type="hidden" id="placeLng" name="lng" value="">
-  <input type="hidden" id="placeAddress" name="address" value="">
-  <input type="hidden" id="placePicture"name="picture" value="">
-  <button id="create">Pick </button>
-</form>
 
-<form>
-  <label for="filter">Look for:</label>
-  <input type="checkbox" name="filter" value="Shop" checked="checked"> Shop
-  <input type="checkbox" name="filter" value="Restaurant" checked="checked"> Restaurant
-  <button id="filterPlace">Search</button>
-</form>
+<div class="row eliminar">
+  <form id="postForm" class="col s12 m6 offset-m3" >
+    <div class="row">
+      <div class="input-field col s5">
+        <input type="text" class="visibles" id="placeName" name="name" placeholder="Place Name" value="">
+      </div>
+      <div class="input-field col s5">
+        <input type="text" class="visibles" id="autocomplete">
+        <input type="hidden" id="placeLat" name="lat" value="">
+        <input type="hidden" id="placeLng" name="lng" value="">
+        <input type="hidden" id="placeAddress" name="address" value="">
+        <input type="hidden" id="placePicture" name="picture" value="">
+    </div>
+    <div class="margen input-field col s2 ">
+      <a href="#" id="create">PICK </a>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+      <input class="radio" value="Restaurant" name="rol" type="radio" id="test1" checked />
+      <label class="radio" for="test1">Restaurant</label>
+      <input class="radio" value="Shop" name="rol" type="radio" id="test2" />
+      <label class="radio" for="test2">Shop</label>
+    </div>
+      <div class="col s6">
+    <form>
+      <p class="loof">Look for:
+          <input type="checkbox" value="Shop" name="filter" id="test5" checked/>
+          <label for="test5">Shop</label>
+          <input type="checkbox"value="Restaurant" name="filter" id="test6" checked="checked" />
+          <label for="test6">Restaurant</label>
+      <a href="#"id="filterPlace">Search</a>
+    </p>
+    </form>
+  </div>
+</div>
+  </form>
 
 
-<div id="map"></div>
+
+</div>
+</div>
+<div class="col s12">
+  <div id="map"></div>
+</div>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=apiKey%>&libraries=places&callback=initMap" async defer></script>
 <script type="text/javascript" src="javascripts/fillInputs.js"></script>

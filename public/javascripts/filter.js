@@ -2,6 +2,7 @@ $("#filterPlace").on("click", function(e){
   e.preventDefault()
   clearMarkers()
   const inputs = $('input[type="checkbox"]:checked')
+  console.log(inputs.val())
   if(inputs.length == 2){
     getPlaces("places")
   }else if(inputs.val() == "Restaurant"){

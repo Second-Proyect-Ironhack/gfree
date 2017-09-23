@@ -8,8 +8,8 @@ $(".translate").on("click", function(e){
   $(itComesFrom).each((index)=>{
     const product = itComesFrom[index]
     const title = $(product).children("h5")
-    const toTranslate = $(title).text()
-    console.log(toTranslate)
+    const description = $(product).siblings().children()
+    const toTranslate = $(title).text() + " " + $(description).text()
     translateProduct(toTranslate,sourceLanguage, targetLanguage, product)
 
   })
@@ -32,16 +32,15 @@ function translateProduct(textoAtraducir,lang1, lang2, toDraw){
 function showText(text, element){
   const translated = text.text[0]
   const title = $(element).children("h5")
-  console.log(title)
+  const description = $(element).siblings().children()
+  const lengthOfTitle = title.text().split(" ").length
+  const arrOfTrans = text.text[0].split(" ")
+  const textForTitle = arrOfTrans.splice(1,lengthOfTitle)
+  console.log(arrOfTrans)
+  const textForDes = arrOfTrans.join("   ");
+  $(description).text(textForDes.slice(0,textForDes.length-1))
+  $(title).text(textForTitle.join(" "))
 
-  $(title).text(translated.slice(0,translated.length-1))
-  // const description = $("#probando").siblings(".collapsible-body").children("span")
-  // const wordsInTittle = title.length
-  // const arrayOfTrans = text.text[0].split(" ")
-  // arrayOfTrans.pop()
-  // const textForTittle = arrayOfTrans.splice(1,wordsInTittle)
-  // $(title).text(textForTittle[0])
-  // $(description).text(arrayOfTrans.join(" "))
 }
 
 function updateLanguages(lang){

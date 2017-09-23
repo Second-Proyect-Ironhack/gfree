@@ -34,10 +34,14 @@ function show(arr){
 
 
 function setInfoWindowContent(elem){
-  if(elem.picture !== undefined){
-    infowindow.setContent(`<div><h2>${elem.name}</h2><img src="${elem.picture}" width="100"><p>${elem.address}</p><a href="/place/${elem._id}">GO</a></div>`)
+  let content = ""
+  if(elem.picture !== ""){
+     content = `<div style="background-image:url(${elem.picture})" class="picture-info"></div>
+    <div class="content"><h5 class="info-title">${elem.name}</h5><h6>${elem.address}</h6><div class="favorites">${elem.favorite.length}</div><div class="btnGo"><a href="/place/${elem._id}" class="toplace">GO</a></div></div>"`
 }
 else{
-  infowindow.setContent(`<div><h2>${elem.name}</h2><p>${elem.address}</p><a href="/place/${elem._id}">GO</a></div>`)
+   content = `<div style="background-image:url(http://www.bcnrestaurantes.com/img/slider/004.jpg)" class="picture-info"></div>
+  <div class="content"><h5 class="info-title">${elem.name}</h5><h6>${elem.address}</h6><div class="favorites">${elem.favorite.length}</div><div class="btnGo"><a href="/place/${elem._id}" class="toplace">GO</a></div></div>"`
 }
+infowindow.setContent(content)
 }

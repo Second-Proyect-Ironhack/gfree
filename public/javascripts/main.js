@@ -63,9 +63,9 @@ infowindow = new google.maps.InfoWindow();
       infowindow.setContent('<div><img src=' + place.photos[0].getUrl({
         'maxWidth': 100,
         'maxHeight': 100
-      }) + '><h3>' + place.name + '</h3><br>' + place.formatted_address);
+      }) + '><h5>' + place.name + '</h5><br>' + place.formatted_address + '</div>');
     } else {
-      infowindow.setContent('<div><h3>' + place.name + '</h3><br>' + place.formatted_address);
+      infowindow.setContent('<div><h5>' + place.name + '</h5><br>' + place.formatted_address+'</div>');
     }
 
     infowindow.open(map, marker);

@@ -57,6 +57,7 @@ body{
 }
 .list-pr .ul-products{
   margin: 0;
+  border:0;
 }
 .value .translation{
   position:relative;
@@ -95,6 +96,87 @@ color:red;
   color: $color-four;
   border: 2px solid $color-four;
   padding: 5px;
+}
+#map{
+  width: 100%;
+  height: 100vh;
+}
+#postForm{
+  position: absolute;
+  z-index:1;
+  background: $color-one;
+}
+#postForm .visibles{
+  background: white;
+}
+#create{
+  color: $color-four;
+  font-size: 25px;
+  padding: 5px;
+  border: 3px solid $color-four;
+  margin-top:5px;
+}
+.margen{
+  margin-top:20px !important;
+  text-align: center;
+}
+.eliminar, .row{
+  margin-bottom: 0 !important;
+}
+.radio{
+  margin-bottom:20px;
+  color: $color-five;
+}
+.picture-info{
+  width:100%;
+  height:100px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.info-title{
+  color: $color-one;
+}
+.favorites {
+  display: inline-block;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/2000px-Gold_Star.svg.png");
+  background-size: contain;
+  padding: 15px 20px;
+  text-align: center;
+  font-size:17px;
+  position: absolute;
+  top:34%;
+  right:16%;
+}
+.loof{
+  margin-top:0 !important;
+  color: $color-five;
+}
+.loof label{
+  color: $color-five;
+}
+.toplace{
+  color: $color-two;
+  padding: 5px 10px;
+  border: 3px solid;
+  font-size: 20px;
+  font-weight: 400;
+}
+.btnGo{
+  margin-top:20px;
+  text-align: right;
+}
+#filterPlace{
+  margin-left: 20px;
+  color: $color-three;
+  padding: 3px 5px;
+  border: 3px solid;
+  font-size: 15px;
+  font-weight: 400;
+}
+.fondo{
+  height: 100vh;
+  background: #014860;
 }
 @media screen and (max-width:700px){
   .list-pr .ul-products{
