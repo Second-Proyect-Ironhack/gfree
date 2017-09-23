@@ -7,8 +7,9 @@ $(".translate").on("click", function(e){
 
   $(itComesFrom).each((index)=>{
     const product = itComesFrom[index]
-    const toTranslate = $(product).text()
-
+    const title = $(product).children("h5")
+    const toTranslate = $(title).text()
+    console.log(toTranslate)
     translateProduct(toTranslate,sourceLanguage, targetLanguage, product)
 
   })
@@ -29,19 +30,24 @@ function translateProduct(textoAtraducir,lang1, lang2, toDraw){
     .catch(e => console.log(e))
 }
 function showText(text, element){
-  console.log(text.text[0])
+  const translated = text.text[0]
   const title = $(element).children("h5")
-  const description = $("#probando").siblings(".collapsible-body").children("span")
-  const wordsInTittle = title.length
-  const arrayOfTrans = text.text[0].split(" ")
-  arrayOfTrans.pop()
-  const textForTittle = arrayOfTrans.splice(1,wordsInTittle)
-  $(title).text(textForTittle[0])
-  $(description).text(arrayOfTrans.join(" "))
+  console.log(title)
+
+  $(title).text(translated.slice(0,translated.length-1))
+  // const description = $("#probando").siblings(".collapsible-body").children("span")
+  // const wordsInTittle = title.length
+  // const arrayOfTrans = text.text[0].split(" ")
+  // arrayOfTrans.pop()
+  // const textForTittle = arrayOfTrans.splice(1,wordsInTittle)
+  // $(title).text(textForTittle[0])
+  // $(description).text(arrayOfTrans.join(" "))
 }
 
 function updateLanguages(lang){
   $("#source option:selected").removeAttr("selected")
   $("#source option[value='"+lang+"']").attr("selected", "selected")
+  var text = $("#source option:selected").text()
+  $(".source .select-dropdown").val(text)
 
 }

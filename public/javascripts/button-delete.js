@@ -1,6 +1,6 @@
 $(".delete").on("click", function(e){
   e.preventDefault()
-  $(this).parent().parent().hide()
+  $(this).parent().parent().hide()  
 
   const updateInfo = {
     id: $(this).parent().parent().attr("data-id"),
