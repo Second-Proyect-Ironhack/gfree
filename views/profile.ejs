@@ -10,12 +10,12 @@
         <li><a href="/home">Go back</a></li>|
       </ul>
     </div>
-    <div>
+    <div id="img-profile">
 <img src="<%= user.picture.pic_path %>"><br>
 </div>
 </section>
 <section id="favorites">
-<h2 class="collection with-header">Favorites</h2>
+<h4 class="collection with-header">Favorites</h4>
               <% places.forEach(place =>{%>
                 <% if(place.favorite.length > 0){%>
                 <%for(var i = 0; i< place.favorite.length; i++){%>
