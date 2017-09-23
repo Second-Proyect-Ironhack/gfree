@@ -1,0 +1,60 @@
+$color-one: #004056;
+$color-two: #2c858d;
+$color-three : #74ceb7;
+$color-four: #c9ffd5;
+$color-five : #ffffcb;
+
+.product-header{
+  height: 50vh;
+  background-position: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0,64,86,0.5)
+}
+.res-name, .address{
+  position: absolute;
+  bottom:0px;
+  left: 20px;
+  color:white;
+}
+.res-name{
+  bottom:20px;
+  left:10px;
+}
+.place-title{
+  font-weight: 200;
+}
+
+.add{
+  position: absolute;
+  text-decoration: none;
+  font-size: 30px;
+  color:$color-four;
+  bottom: 20px;
+  right:50px;
+  border:4px solid $color-four;
+  padding: 10px 20px;
+}
+#love{
+  color: yellow;
+  position: absolute;
+  bottom:20px;
+  right: 240px;
+}
+.list-title{
+  padding:10px 0;
+  margin:0;
+  background: $color-one;
+  color: $color-five;
+}
+.translation{
+  position:relative;
+}
+.delete{
+top:25px;
+position: absolute;
+right: 20px;
+color:red;
+
+}

@@ -3,7 +3,7 @@ $(document).ready(function(){
 })
 
 function pickWord(){
-  const wordToCheck = $(".translation h3").text()
+  const wordToCheck = $(".translation h5").text()
   detect(wordToCheck)
 }
 

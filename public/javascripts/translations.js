@@ -30,8 +30,8 @@ function translateProduct(textoAtraducir,lang1, lang2, toDraw){
 }
 function showText(text, element){
   console.log(text.text[0])
-  const title = $(element).children("h3")
-  const description = $(element).children("p")
+  const title = $(element).children("h5")
+  const description = $("#probando").siblings(".collapsible-body").children("span")
   const wordsInTittle = title.length
   const arrayOfTrans = text.text[0].split(" ")
   arrayOfTrans.pop()
