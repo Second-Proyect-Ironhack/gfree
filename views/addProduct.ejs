@@ -1,8 +1,14 @@
+<div id="addproduct">
+  <div id="addproduct-container">
+    <h2>Add a product</h2>
 <form action="/<%= placeId %>/add/product/<%= placeName %>" method="post"  enctype="multipart/form-data" >
   <label for="name">Name</label>
   <input type="text" name="name" value="">
   <label for="description">Description</label>
   <textarea name="description" cols="20" rows="10"></textarea>
-  <input type="file" name="picture" value="">
+  <label for="picture">Picture</label>
+  <input type="file" name="picture" value=""><br><br>
   <input type="submit" name="" value="Add">
 </form>
+</div>
+</div>
