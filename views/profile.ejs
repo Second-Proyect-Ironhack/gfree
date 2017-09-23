@@ -1,15 +1,44 @@
-<a href="/home">Go back</a>
-<h1><%= user.username %></h1>
-<img src="<%= user.picture.pic_path %>" height=200 width=80%><br>
-<p><%= user.picture.pic_name %></p>
-<h2>Favorites</h2>
-<% places.forEach(place =>{%>
-  <% if(place.favorite.length > 0){%>
-  <%for(var i = 0; i< place.favorite.length; i++){%>
-    <%if(place.favorite[i].toString() === user._id.toString()){%>
-        <h3><%= place.name%></h3>
-    <%}%>
-  <%}}%>
-<%})%>
-<a href="/edit">Edit profile</a><br>
-<a href="/<%= user._id %>/delete/">Delete your account</a>
+<div id="profile">
+<section id="section1">
+
+  <h1><%= user.username %></h1>
+      <!-- <a href="#" class="brand-logo">Gfree</a> -->
+      <div>
+      <ul>
+        <li><a href="/edit">Edit profile</a></li>|
+        <li><a href="/<%= user._id %>/delete/">Delete your account</a></li>|
+        <li><a href="/home">Go back</a></li>|
+      </ul>
+    </div>
+    <div>
+<img src="<%= user.picture.pic_path %>"><br>
+</div>
+</section>
+<section id="favorites">
+<h2 class="collection with-header">Favorites</h2>
+              <% places.forEach(place =>{%>
+                <% if(place.favorite.length > 0){%>
+                <%for(var i = 0; i< place.favorite.length; i++){%>
+                  <%if(place.favorite[i].toString() === user._id.toString()){%>
+                      <p class="collection-item"><%= place.name%><i class="material-icons">send</i></p>
+                  <%}%>
+                <%}}%>
+              <%})%>
+    </section>
+
+<footer id="footer" class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <p class="white-text">Learn more about us</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2017 Copyright Text
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
+        </div>
+      </footer>
+    </div>
