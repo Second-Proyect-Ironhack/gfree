@@ -4,6 +4,9 @@ $color-three : #74ceb7;
 $color-four: #c9ffd5;
 $color-five : #ffffcb;
 
+body{
+  padding: 0px;
+}
 .product-header{
   height: 50vh;
   background-position: center;
@@ -47,14 +50,78 @@ $color-five : #ffffcb;
   margin:0;
   background: $color-one;
   color: $color-five;
+  border-bottom: 1px solid $color-two;
 }
-.translation{
+.list-pr{
+  margin: 0;
+}
+.list-pr .ul-products{
+  margin: 0;
+}
+.value .translation{
   position:relative;
+  background-color: $color-one;
+  color: $color-four;
+  border-bottom: 1px solid $color-two;
+}
+.value .collapsible-body{
+  background-color: $color-one;
+  color:$color-three;
 }
 .delete{
-top:25px;
+top:30px;
 position: absolute;
 right: 20px;
 color:red;
-
+}
+.product-img{
+  width:60px;
+  height:60px;
+}
+.product-tittle{
+  margin-left: 30px;
+}
+#translator > div > div > input{
+  color: $color-five;
+  position: relative;
+}
+.boton-translate{
+  position: absolute;
+  top:20px;
+  left: 33% !important;
+  font-size: 20px;
+}
+.boton-translate a{
+  color: $color-four;
+  border: 2px solid $color-four;
+  padding: 5px;
+}
+@media screen and (max-width:700px){
+  .list-pr .ul-products{
+    border:0;
+  }
+  .container{
+    margin:0 !important;
+    width: 100% !important;
+  }
+  .product-header{
+    height: 50vh;
+  }
+  .res-name{
+    font-size: 28px;
+    left:18px;
+    bottom:30px;
+  }
+  .address{
+    font-size: 20px;
+  }
+  .add{
+    font-size: 17px;
+    bottom:60%;
+    right: 30px;
+  }
+  #love{
+    bottom:58%;
+    right:150px;
+  }
 }
