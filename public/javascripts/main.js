@@ -4,8 +4,8 @@ var infowindow
 var markers = []
 function initMap() {
   var position = {
-    lat: 41.3977381,
-    lng: 2.190471916
+    lat: 40.3925321,
+    lng: -3.6982669000000215
   };
 
   map = new google.maps.Map(

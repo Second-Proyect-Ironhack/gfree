@@ -99,7 +99,7 @@ color:red;
 }
 #map{
   width: 100%;
-  height: 100vh;
+  height: 92vh;
 }
 #postForm{
   position: absolute;
@@ -185,8 +185,11 @@ color:red;
   transition: left 0.3s, top 0.3s;
 }
 .slide{
-  top:5% !important;
-  left:5% !important;
+  top:13% !important;
+  left:2% !important;
+}
+.dark{
+  background: $color-two;
 }
 @media screen and (max-width:700px){
   .list-pr .ul-products{
@@ -218,6 +221,6 @@ color:red;
   }
   #show-form{
     left:45%;
-    top:25%;
+    top:31%;
   }
 }
