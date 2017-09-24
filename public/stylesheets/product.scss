@@ -107,7 +107,7 @@ color:red;
   background: $color-one;
 }
 #postForm .visibles{
-  background: white;
+  color: white;
 }
 #create{
   color: $color-four;
@@ -191,6 +191,90 @@ color:red;
 .dark{
   background: $color-two;
 }
+.first{
+  height:93vh;
+  background-image: url("/images/landing.jpeg");
+  background-position: center;
+  background-size: conver;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.main-title{
+  margin: 0 auto;
+  position: absolute;
+  top:25%;
+  left:35%;
+}
+#title{
+  font-family: 'Dancing Script', cursive;
+  color: #d5d6cf;
+  font-size:180px !important;
+}
+.brand-logo{
+  font-family: 'Dancing Script', cursive;
+}
+#nav{
+  background-color: $color-two;
+}
+.text-info{
+  background: #d5d6cf;
+  height: 720px;
+  padding: 0 !important;
+  margin: 0;
+  position: relative;
+}
+.text-written{
+  position: absolute;
+  width:40%;
+  top: 40%;
+  left:30%;
+}
+.section-title{
+  color: $color-two;
+  border-bottom: 2px solid $color-one;
+}
+.first-section{
+  position: relative;
+  bottom:50px;
+  z-index: 2;
+}
+.second-section{
+  position: relative;
+  bottom: 150px;
+  z-index: 2;
+}
+.third-section{
+  position: relative;
+  bottom: 250px;
+  z-index: 2;
+}
+.first-holder{
+  height: 500px;
+  position: relative;
+  bottom:100px;
+  z-index: 1;
+}
+.second-holder{
+  height: 500px;
+  position: relative;
+  bottom:200px;
+  z-index: 1;
+}
+.second-back{
+  background-image: url("/images/second-holder.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.first-back{
+  background-image: url("/images/first-holder.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#index{
+  background-color: $color-one;
+  z-index: -3;
+}
 @media screen and (max-width:700px){
   .list-pr .ul-products{
     border:0;
@@ -222,5 +306,14 @@ color:red;
   #show-form{
     left:45%;
     top:31%;
+  }
+  .hideme{
+    display: none;
+  }
+  .first-section,.second-section,.third-section,.first-holder,.second-holder{
+    bottom:0
+  }
+  #title{
+    font-size:70px !important;
   }
 }
