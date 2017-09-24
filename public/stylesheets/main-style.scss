@@ -59,7 +59,13 @@ body{
 
 
 //profile
+#profile{
+  background-color: #F7f7f7;
+}
 
+#profile .nav-wrapper{
+  background-color: #3b5998;
+}
 .nav-mobile{
   float:right;
 }
@@ -69,7 +75,7 @@ body{
 }
 
 .background-image{
-  background-image: url("/images/fondo2.jpg");
+  background-image: url("/images/fondo.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 300px;
@@ -84,6 +90,10 @@ body{
   display: inline-block;
   padding: 2%;
 
+}
+
+#profile .page-footer{
+  background-color: #3b5998;
 }
 
 @media (min-width: 1100px) {
@@ -105,15 +115,9 @@ body{
     margin:0;
 
   }
-  #profile #footer{
+  #profile footer{
     width:100%;
-    padding: 0;
+    padding: 0 5%;
     margin: 0;
-  }
-}
-
-@media (max-width: 500px) {
-  #nav .brand-logo{
-    left:10%;
   }
 }
