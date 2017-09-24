@@ -2,9 +2,10 @@
 
 $("#love").on("click", function(e){
   e.preventDefault()
+  if($("#love i ").text() !== "star"){
   const placeID = {id : $("#love").attr("data-value")}
   addFavorite(placeID)
-  $("#love").attr("href", "#")
+}
 })
 
 function addFavorite(id){
@@ -13,5 +14,8 @@ function addFavorite(id){
     method: "post",
     dataType: "json",
     data : id
+  }).then(()=>{
+    $("#love").attr("href", "#")
+    $("#love i").text("star")
   })
 }

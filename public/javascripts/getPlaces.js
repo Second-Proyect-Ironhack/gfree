@@ -9,9 +9,15 @@ function getPlaces(url){
 }
 
 function show(arr){
-
+  let icon = ""
   arr.forEach(obj =>{
+    if(obj.rol === "Restaurant"){
+      icon = "/images/rest.ico"
+    }else{
+      icon = "/images/cart.ico"
+    }
     markers.push(new google.maps.Marker({
+      icon : icon ,
       title: obj.name,
       map: map,
       position: {
