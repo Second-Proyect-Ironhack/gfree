@@ -4,7 +4,7 @@ const Place = require('../models/Place')
 const Product = require('../models/Product')
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
-router.get('/map', (req,res,next)=>{
+router.get('/map',ensureLoggedIn("/login"), (req,res,next)=>{
   res.render('map', {apiKey: "AIzaSyAX6RsStZrkIKLH3c3l0ghnDzGuwrUUC9E", user: req.user})
 })
 router.get("/restaurants",(req, res, next)=>{
