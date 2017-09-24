@@ -1,3 +1,20 @@
+<nav class="dark" >
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Gfree</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/map">Map</a></li>
+      <li><a href="/profile">Your Profile</a></li>
+      <li><a href="/logout">LogOut</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="/map">Map</a></li>
+      <li><a href="/profile">Your Profile</a></li>
+      <li><a href="/logout">LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="fondo">
 <div class="container">
   <%if(place.picture === ""){%>
   <div class="col s12  product-header" style="background-image:url(http://www.bcnrestaurantes.com/img/slider/004.jpg)">
@@ -86,10 +103,11 @@
 </ul>
 </div>
 </div>
-
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/button-delete.js"></script>
 <script type="text/javascript" src="/javascripts/detect-language.js"></script>
 <script type="text/javascript" src="/javascripts/favorite-place.js"></script>
 <script type="text/javascript" src="/javascripts/init-select.js"></script>
+<script type="text/javascript" src="/javascripts/toggle.js"></script>
 <script type="text/javascript" src="/javascripts/translations.js"></script>
