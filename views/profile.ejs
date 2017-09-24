@@ -1,20 +1,53 @@
 <div id="profile">
-<section id="section1">
+  <nav id="nav">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Profile</a>
+        <ul class="nav-mobile">
+          <li><a href="/home">Go back</a></li>
+        </ul>
+      </div>
+    </nav>
+
+<div class="background-image">
+</div>
+
+<section class="section1">
+  <div class="img-profile">
+<img src="<%= user.picture.pic_path %>"><br>
+</div>
 
   <h1><%= user.username %></h1>
       <!-- <a href="#" class="brand-logo">Gfree</a> -->
-      <div>
       <ul>
         <li><a href="/edit">Edit profile</a></li>|
-        <li><a href="/<%= user._id %>/delete/">Delete your account</a></li>|
-        <li><a href="/home">Go back</a></li>|
+        <li><a href="/<%= user._id %>/delete/">Delete your account</a></li>
       </ul>
-    </div>
-    <div id="img-profile">
-<img src="<%= user.picture.pic_path %>"><br>
-</div>
+
 </section>
-<section id="favorites">
+
+
+<div class="card">
+   <div class="card-image waves-effect waves-block waves-light">
+     <img class="activator" src="/images/card.jpeg">
+   </div>
+   <div class="card-content">
+     <span class="card-title activator grey-text text-darken-4">Favorite places<i class="material-icons right">more_vert</i></span>
+     <p><a href="#">Show</a></p>
+   </div>
+   <div class="card-reveal">
+     <span class="card-title grey-text text-darken-4">Places<i class="material-icons right">close</i></span>
+                   <% places.forEach(place =>{%>
+                     <% if(place.favorite.length > 0){%>
+                     <%for(var i = 0; i< place.favorite.length; i++){%>
+                       <%if(place.favorite[i].toString() === user._id.toString()){%>
+                           <p><%= place.name%></p>
+                       <%}%>
+                     <%}}%>
+                   <%})%>
+   </div>
+ </div>
+
+<!-- <section id="favorites">
 <h4 class="collection with-header">Favorite places</h4>
               <% places.forEach(place =>{%>
                 <% if(place.favorite.length > 0){%>
@@ -24,7 +57,7 @@
                   <%}%>
                 <%}}%>
               <%})%>
-    </section>
+    </section> -->
 
 <footer id="footer" class="page-footer">
         <div class="container">
