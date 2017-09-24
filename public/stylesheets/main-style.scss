@@ -49,6 +49,16 @@ body{
   font-size: 14px;
 }
 
+#signup a{
+  color:$color-two;
+}
+
+#login a{
+  color:$color-one;
+  padding-top: 5%;
+  font-size: 14px;
+}
+
 #addproduct h2,p{
   color: #DCDCDC;
 }
@@ -57,6 +67,12 @@ body{
   color: #DCDCDC;
   font-size: 14px;
 }
+
+#addproduct .btn{
+  background-color: #DCDCDC;
+  color: #000;
+}
+
 
 #signup{
   background-image: url("/images/fondo6.jpg");
@@ -85,6 +101,10 @@ body{
 #edit-body label{
   color: #000;
   font-size: 14px;
+}
+
+#edit-body button{
+  background-color: $color-one;
 }
 
 //profile
