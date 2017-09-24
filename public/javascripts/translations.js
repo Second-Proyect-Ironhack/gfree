@@ -4,11 +4,12 @@ $(".translate").on("click", function(e){
   const sourceLanguage = $("#source").val()
   const targetLanguage = $("#target").val()
   const itComesFrom = $(".translation")
-  console.log(itComesFrom)
+
   $(itComesFrom).each((index)=>{
     const product = itComesFrom[index]
-    const toTranslate = $(product).text()
-    console.log(toTranslate)
+    const title = $(product).children("h5")
+    const description = $(product).siblings().children()
+    const toTranslate = $(title).text() + " " + $(description).text()
     translateProduct(toTranslate,sourceLanguage, targetLanguage, product)
 
   })
@@ -17,7 +18,6 @@ $(".translate").on("click", function(e){
 
 function translateProduct(textoAtraducir,lang1, lang2, toDraw){
    const texto = textoAtraducir.split(" ").join("+")
-   console.log(texto)
   const language = lang1 + "-" + lang2
   $.ajax({
     method:"get",
@@ -30,19 +30,23 @@ function translateProduct(textoAtraducir,lang1, lang2, toDraw){
     .catch(e => console.log(e))
 }
 function showText(text, element){
-  console.log(text.text[0])
-  const title = $(element).children("h3")
-  const description = $(element).children("p")
-  const wordsInTittle = title.length
-  const arrayOfTrans = text.text[0].split(" ")
-  arrayOfTrans.pop()
-  const textForTittle = arrayOfTrans.splice(1,wordsInTittle)
-  $(title).text(textForTittle[0])
-  $(description).text(arrayOfTrans.join(" "))
+  const translated = text.text[0]
+  const title = $(element).children("h5")
+  const description = $(element).siblings().children()
+  const lengthOfTitle = title.text().split(" ").length
+  const arrOfTrans = text.text[0].split(" ")
+  const textForTitle = arrOfTrans.splice(1,lengthOfTitle)
+  console.log(arrOfTrans)
+  const textForDes = arrOfTrans.join("   ");
+  $(description).text(textForDes.slice(0,textForDes.length-1))
+  $(title).text(textForTitle.join(" "))
+
 }
 
 function updateLanguages(lang){
   $("#source option:selected").removeAttr("selected")
   $("#source option[value='"+lang+"']").attr("selected", "selected")
+  var text = $("#source option:selected").text()
+  $(".source .select-dropdown").val(text)
 
 }

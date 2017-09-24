@@ -4,7 +4,7 @@ const Place = require('../models/Place')
 const Product = require('../models/Product')
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
-router.get('/map', (req,res,next)=>{
+router.get('/map',ensureLoggedIn("/login"), (req,res,next)=>{
   res.render('map', {apiKey: "AIzaSyAX6RsStZrkIKLH3c3l0ghnDzGuwrUUC9E", user: req.user})
 })
 router.get("/restaurants",(req, res, next)=>{
@@ -46,8 +46,12 @@ router.get("/place/:id",ensureLoggedIn("/login"),(req,res,next)=>{
   Product.find({refToPlace:req.params.id})
   .then(result => {
     Place.findOne({_id:req.params.id}).then(result2=>res.render ("place" , {place:result2 ,products:result, userId : req.user._id}))})
+})
 
-
-
+router.post("/add/favorite",ensureLoggedIn("/login"),(req,res,next)=>{
+  const placeId = req.body.id
+  Place.findByIdAndUpdate(placeId,{$push:{favorite: req.user._id}})
+        .then((place)=> res.status(200).json(place))
+        .catch((err) => res.status(500).json({err}))
 })
 module.exports = router

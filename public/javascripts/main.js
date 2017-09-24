@@ -4,8 +4,8 @@ var infowindow
 var markers = []
 function initMap() {
   var position = {
-    lat: 41.3977381,
-    lng: 2.190471916
+    lat: 40.3925321,
+    lng: -3.6982669000000215
   };
 
   map = new google.maps.Map(
@@ -50,7 +50,7 @@ infowindow = new google.maps.InfoWindow();
       map.setZoom(17); // Why 17? Because it looks good.
     }
     marker.setIcon( /** @type {google.maps.Icon} */ ({
-      url: place.icon,
+      // url: place.icon,
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),
@@ -63,9 +63,9 @@ infowindow = new google.maps.InfoWindow();
       infowindow.setContent('<div><img src=' + place.photos[0].getUrl({
         'maxWidth': 100,
         'maxHeight': 100
-      }) + '><h3>' + place.name + '</h3><br>' + place.formatted_address);
+      }) + '><h5>' + place.name + '</h5><br>' + place.formatted_address + '</div>');
     } else {
-      infowindow.setContent('<div><h3>' + place.name + '</h3><br>' + place.formatted_address);
+      infowindow.setContent('<div><h5>' + place.name + '</h5><br>' + place.formatted_address+'</div>');
     }
 
     infowindow.open(map, marker);

@@ -1,10 +1,10 @@
 $(".delete").on("click", function(e){
   e.preventDefault()
-  $(this).parent().hide()
+  $(this).parent().parent().hide()  
 
   const updateInfo = {
-    id: $(this).parent().attr("data-id"),
-    delete: $(this).parent().val()+1,
+    id: $(this).parent().parent().attr("data-id"),
+    delete: $(this).parent().parent().val()+1,
   };
 
  $.ajax({

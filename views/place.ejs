@@ -1,32 +1,89 @@
+<nav class="dark" >
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Gfree</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/map">Map</a></li>
+      <li><a href="/profile">Your Profile</a></li>
+      <li><a href="/logout">LogOut</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="/map">Map</a></li>
+      <li><a href="/profile">Your Profile</a></li>
+      <li><a href="/logout">LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="fondo">
+<div class="container">
+  <%if(place.picture === ""){%>
+  <div class="col s12  product-header" style="background-image:url(http://www.bcnrestaurantes.com/img/slider/004.jpg)">
+  <%}else{%>
+  <div class="col s12  product-header" style="background-image:url(<%=place.picture%>)">
+  <%}%>
+  <div class="col s12 product-header">
+  <h1 class="res-name place-title"><%= place.name  %></h1>
+  <h5 class="address"><%= place.address  %></h5>
+  <%  let fav = false%>
+  <% place.favorite.forEach((user)=>{%>
+      <%if(user.toString() === userId.toString()){%>
+        <%fav = true%>
+    <%}%>
+  <%})%>
+  <%if(fav !== true){%>
+  <a href="/add/favorite/<%=place._id%>" data-value ="<%=place._id%>" id="love"><i class="material-icons medium">star_border</i></a>
+  <%} else{%>
+    <a href="#" data-value ="<%=place._id%>" id="love"><i class="material-icons medium">star</i></a>
+  <%}%>
+  <div class="row">
+  <form id="translator">
+  <div class="input-field col s2 source">
+    <select id="source" disabled>
+      <option value="es" selected>Spanish</option>
+      <option value="fr">French</option>
+      <option value="en">English</option>
+      <option value="de">German</option>
+      <option value="pl">Polish</option>
+      <option value="zh">Chinese</option>
+      <option value="ja">Japanese</option>
+      <option value="ru">Rusian</option>
+      <option value="eo">Esperanto</option>
+    </select>
+  </div>
+  <div class="input-field col s2">
+    <select id="target">
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+      <option value="en">English</option>
+      <option value="de">German</option>
+      <option value="pl">Polish</option>
+      <option value="zh">Chinese</option>
+      <option value="ja">Japanese</option>
+      <option value="ru">Rusian</option>
+      <option value="eo">Esperanto</option>
+    </select>
+  </div>
+    <div class="col s2 boton-translate">
+    <a href="#" class="translate">Translate</a>
+  </div>
+  </form>
+</div>
+  <a href="<%= place._id %>/add/product/<%= place.name %>" class="add">ADD</a>
+</div>
 
-<h1><%= place.name  %></h1>
-<img src="<%= place.picture %>" height=200 width=300><br>
-<p><%= place.address  %></p>
-<h2>Product list</h2>
-<form>
-  <select id="source" disabled>
-    <option value="es" selected>Spanish</option>
-    <option value="fr">French</option>
-    <option value="en">English</option>
-    <option value="de">German</option>
-    <option value="zh">Chinese</option>
-    <option value="ja">Japanese</option>
-    <option value="ru">Rusian</option>
-    <option value="eo">Esperanto</option>
-  </select>
-  <select id="target">
-    <option value="es">Spanish</option>
-    <option value="fr">French</option>
-    <option value="en">English</option>
-    <option value="de">German</option>
-    <option value="zh">Chinese</option>
-    <option value="ja">Japanese</option>
-    <option value="ru">Rusian</option>
-    <option value="eo">Esperanto</option>
-  </select>
-  <button class="translate">Translate</button>
-</form>
-<ul>
+</div>
+<!-- De aqui hacia arriba solo header -->
+<div class="col s12  list-title">
+<%if(place.rol == "Shop" ){%>
+  <h5 class="center-align">PRODUCT LIST</h5>
+<%}else{%>
+  <h5 class="center-align">DISH LIST</h5>
+  <%}%>
+</div>
+
+
+<div class="col s12 list-pr">
+<ul class="collapsible ul-products" data-collapsible="accordion">
   <% products.forEach((product) => { %>
     <% let clicked = false;%>
     <% for(var i = 0; i< product.refToUser.length; i++){%>
@@ -38,17 +95,21 @@
     <%console.log(userId)%>
       <%if(clicked !== true){%>
     <li class="value" data-id="<%= product._id %>"value="<%= product.delete %>">
-      <div class="translation">
-        <h3><%= product.name %></h3>
-        <p><%= product.description %></p>
-      </div>
-      <button class="delete">Delete</button>
+        <div class="translation collapsible-header valign-wrapper"><img class="product-img circle" src="<%= product.picture.pic_path %>"><h5 class="product-tittle"><%= product.name %></h5><a href="#" class="delete"><i class="material-icons small">cancel</i></a></div>
+        <div class="collapsible-body"><span><%= product.description %></span></div>
+        <!-- <h3><%= product.name %></h3>
+        <p><%= product.description %></p> -->
     </li>
     <%}%>
   <%  }) %>
 </ul>
-<a href="<%= place._id %>/add/product/<%= place.name %>">Add product</a>
-
+</div>
+</div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/button-delete.js"></script>
+<script type="text/javascript" src="/javascripts/detect-language.js"></script>
+<script type="text/javascript" src="/javascripts/favorite-place.js"></script>
+<script type="text/javascript" src="/javascripts/init-select.js"></script>
+<script type="text/javascript" src="/javascripts/toggle.js"></script>
 <script type="text/javascript" src="/javascripts/translations.js"></script>
