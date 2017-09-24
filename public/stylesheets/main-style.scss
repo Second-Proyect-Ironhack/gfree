@@ -14,10 +14,15 @@ body{
   margin: 0 auto;
 }
 
-#img-profile{
+.img-profile{
   width:40%;
   height:auto;
   margin: 0 30%;
+}
+
+.img-profile img{
+  width:100%;
+  border-radius: 50%;
 }
 
 #login{
