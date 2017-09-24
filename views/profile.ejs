@@ -36,29 +36,17 @@
      <p><a href="#">Show</a></p>
    </div>
    <div class="card-reveal">
-     <span class="card-title grey-text text-darken-4">Places<i class="material-icons right">close</i></span>
+     <span class="card-title grey-text text-darken-4">Favorites<i class="material-icons right">close</i></span>
                    <% places.forEach(place =>{%>
                      <% if(place.favorite.length > 0){%>
                      <%for(var i = 0; i< place.favorite.length; i++){%>
                        <%if(place.favorite[i].toString() === user._id.toString()){%>
-                           <p><%= place.name%></p>
+                           <p><i class="material-icons">star_border</i><%= place.name%></p>
                        <%}%>
                      <%}}%>
                    <%})%>
    </div>
  </div>
-
-<!-- <section id="favorites">
-<h4 class="collection with-header">Favorite places</h4>
-              <% places.forEach(place =>{%>
-                <% if(place.favorite.length > 0){%>
-                <%for(var i = 0; i< place.favorite.length; i++){%>
-                  <%if(place.favorite[i].toString() === user._id.toString()){%>
-                      <p class="collection-item"><%= place.name%><i class="material-icons">send</i></p>
-                  <%}%>
-                <%}}%>
-              <%})%>
-    </section> -->
 
 <footer class="page-footer">
         <div class="container">

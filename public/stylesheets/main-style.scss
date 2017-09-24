@@ -72,6 +72,15 @@ body{
   color: #DCDCDC;
 }
 
+#addproduct input{
+  color: #DCDCDC;
+}
+
+#addproduct #add{
+  color: #000;
+}
+
+
 #addproduct label{
   color: #DCDCDC;
   font-size: 14px;
@@ -121,9 +130,7 @@ body{
   background-color: #F7f7f7;
 }
 
-#profile .nav-wrapper{
-  background-color: #3b5998;
-}
+
 .nav-mobile{
   float:right;
 }
@@ -150,8 +157,15 @@ body{
 
 }
 
-#profile .page-footer{
-  background-color: #3b5998;
+
+#profile .nav-wrapper, #profile .page-footer {
+    background-color: $color-two;
+}
+#profile a{
+  color: $color-two;
+}
+#profile .brand-logo{
+  color:#fff;
 }
 
 @media (min-width: 1100px) {
@@ -177,4 +191,13 @@ body{
     padding: 0 5%;
     margin: 0;
   }
+}
+#profile .nav-wrapper, #profile .page-footer {
+    background-color: $color-two;
+}
+#profile a{
+  color: $color-two;
+}
+#profile .brand-logo{
+  color:#fff;
 }
