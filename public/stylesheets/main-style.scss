@@ -14,13 +14,17 @@ body{
   margin: 0 auto;
 }
 
-
+#index #nav li{
+  float: right;
+}
 #nav{
   margin:0;
   padding:0;
   background-color: $color-two;
   padding: 5px;
 }
+
+
 
 .title{
   text-align: center;
@@ -33,34 +37,104 @@ body{
 }
 
 #footer{
-  margin-top: 60px;
+  margin-top: 100px;
   background-color: $color-two;
 }
 
-#edit-body, #login, #signup, #addproduct{
+#profile footer{
   background-color: $color-two;
-  width:100%;
-  height:1000px;
-  padding-top: 5%;
+  position: fixed;
+  width: 80%;
+  bottom: 0;
+  margin-top:0;
 }
 
-#edit-profile, #login-container, #signup-container, #addproduct-container{
-  color: $color-two;
-  height: 600px;
-  width: 70%;
-  margin: 0 auto;
+#profile{
+  color: #fff;
+  margin: 0 10%;
+  background-color: #F5F5F5;
+  height: 800px;
+}
+
+#profile img{
+  width: 40%;
+  border-radius: 50%;
+
+}
+#img-profile{
+  width:40%;
+  height:auto;
+  margin: 0 30%;
+}
+
+#section1{
+  background-color: $color-two;
+  text-align: center;
+  padding: 2%;
+  border-radius: 1%;
+}
+#section1 li{
+  display: inline-block;
+  padding: 0 2.5%;
+}
+#section1 li a{
+  color:#FFF;
+}
+
+#profile #favorites{
+  color:$color-one;
+  border-radius: 1%;
+}
+
+#profile i{
+  float: right;
+}
+#profile #favorites p{
   padding-left: 10%;
-  border: 3px solid $color-three;
-  border-radius: 15%;
-  padding-right: 20px;
-  background-color: #FFF;
-
+  font-size: 24px;
+  border-bottom: 1px solid #DCDCDC;
+  margin-bottom: 2%;
+  border-radius: 1%;
+  background-color: #F8F8FF;
 }
 
-#addproduct-container h2{
-  margin-bottom: 8%;
+#favorites h4{
+  background-color: #DCDCDC;
+  margin-top: 0;
+  padding: 2%;
 }
 
-#login-title{
-  margin-bottom: 10%;
+#favorites{
+  background-color: #F5F5F5;
+}
+
+@media (min-width: 1100px) {
+  #profile{
+    width: 70%;
+    margin: 0 15%;
+  }
+  #profile #footer{
+    width:70%;
+
+  }
+}
+
+@media (max-width: 600px) {
+  #profile{
+    width: 100%;
+    padding:0;
+    margin:0;
+
+  }
+  #profile #footer{
+    width:100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  #nav .brand-logo{
+    left:10%;
+  }
 }
