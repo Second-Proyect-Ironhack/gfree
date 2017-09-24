@@ -14,49 +14,78 @@ body{
   margin: 0 auto;
 }
 
-// #index #nav li{
-//   float: right;
-// }
-// #nav{
-//   margin:0;
-//   padding:0;
-//   background-color: $color-two;
-//   padding: 5px;
-// }
-//
-//
-//
-// .title{
-//   text-align: center;
-//   color: $color-one;
-// }
-//
-// #big-logo{
-//   margin: 0 auto;
-//   width:40%;
-// }
-//
-// #footer{
-//   margin-top: 100px;
-//   background-color: $color-two;
-// }
-
-
-
-
-
-// #profile img{
-//   width: 40%;
-//   border-radius: 50%;
-//
-// }
 #img-profile{
   width:40%;
   height:auto;
   margin: 0 30%;
 }
 
+#login{
+  background-image: url("/images/fondo5.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
 
+#login h2{
+  color: $color-one;
+}
+
+#login label{
+  color: $color-one;
+  font-size: 14px;
+}
+
+#signup h2{
+  color: #FFF;
+}
+
+#signup p{
+  color: #FFF;
+}
+
+#signup label{
+  color: #FFF;
+  font-size: 14px;
+}
+
+#addproduct h2,p{
+  color: #000000;
+}
+
+#addproduct label{
+  color: #000000;
+  font-size: 14px;
+}
+
+#signup{
+  background-image: url("/images/fondo6.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+#addproduct{
+  background-image: url("/images/fondo7.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+#edit-body{
+  background-image: url("/images/fondo8.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color:$color-one;
+}
+
+
+
+#edit-body label{
+  color: $color-one;
+  font-size: 14px;
+}
 
 //profile
 #profile{
@@ -106,7 +135,6 @@ body{
 
   }
 }
-
 
 @media (max-width: 600px) {
   #profile{
