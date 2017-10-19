@@ -4,7 +4,7 @@
   <div class="col s12 m4 l4">
 <h2>SignUp</h2>
 
-<form action="/signup" method="POST" id="form-container" enctype="multipart/form-data">
+<form action="/signup" method="POST" id="form-container">
   <div class="form-group">
   <label for="username">Username</label>
   <input id="username" type="text"  class="form-control" name="username" placeholder="Your name">
@@ -23,11 +23,6 @@
     <div class="error-message"><%= message %></div>
   <% } %>
   <br><br>
-  <div class="form-group">
-  <label for="picture">Profile picture</label>
-  <input id="picture" type="file" class="form-control" name="picture">
-  <br><br>
-</div>
   <button class="btn btn-default">Create account</button>
 </form>
   <p class="account-message">

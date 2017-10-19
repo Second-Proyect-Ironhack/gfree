@@ -17,7 +17,7 @@ router.get("/signup", ensureLoggedOut(), (req, res, next) => {
   res.render("signup");
 });
 
-router.post("/signup", upload.single('picture'), (req, res, next) => {
+router.post("/signup",(req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
@@ -42,10 +42,6 @@ router.post("/signup", upload.single('picture'), (req, res, next) => {
       username,
       email,
       password: hashPass,
-      picture : {
-                    pic_path: `/uploads/${req.file.filename}`,
-                    pic_name : req.file.originalname
-                  }
     })
     .save()
     .then(user => res.redirect('/'))
